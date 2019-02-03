@@ -6,45 +6,58 @@ import ProfileView from './ProfileView';
 
 class SignInView extends React.Component {
     state = {
-        newUser: []
+        newUser: {},
+        validUser: false,
+        username: '',
+        password: ''
     };
-
-    // going to need changehandlers to record user input
-    // going to need an onsubmit function that updates state
-    // going to need to route to ItemView or Profile View once state is updated 
+    
     // going to need a navbar
 
+    changeHandler = e => {
+        this.setState({
+            [e.target.name]: e.target.value,
+        });
+    };
+
+    submitHandler = e => {
+        this.setState({validUser: true});
+        e.preventDefault();
+    };
 
     render() {
-        // might turn the forms into components
         return (
             <div className='PageContainer'>
 
-                <div className='SignInForm'>
-                    <form /* onSubmit={submitHandler} */ >
-                        <input placeholder = 'username' />
-                        <input placeholder = 'password' />
-                        <Link to='/Vault' Component={ItemListView}> 
-                            <button type='submit'> Sign In </button>
-                        </Link>
-                    </form>
-                </div>
+                {
 
-                <div className='SignUpForm'> 
-                    <form /* onSubmit={submitHandler} */>
-                        <input placeholder = 'username' />
-                        <input placeholder = 'password' />
-                        <input placeholder = 'email' />
-                        <input placeholder = 'phone number' />
-                        <input placeholder = 'location' />
-                        <input placeholder = 'picture' />
-                        <input placeholder = 'first name' />
-                        <input placeholder = 'last name' />
+                    this.state.validUser === true ? 
+                    <div>
+                        <p>Welcome {this.state.username}! Where to next?</p>
+                        <Link to='/Vault' Component={ItemListView}>
+                            <button> Go to Vault </button>
+                        </Link> 
                         <Link to='/Profile' Component={ProfileView}>
-                            <button type='submit'> Sign Up </button>
-                        </Link>
-                    </form>
-                </div>
+                            <button> Go to Profile </button>
+                        </Link> 
+                    </div>            
+
+                    : 
+                    <div className='SignInForm'>
+                        <form onSubmit={this.submitHandler} >
+                            <input 
+                                placeholder = 'username' 
+                                name = 'username' 
+                                onChange = {this.changeHandler} />
+                            <input 
+                                placeholder = 'password' 
+                                name = 'password' 
+                                onChange = {this.changeHandler} />
+                            <button type='submit'>Sign In</button>
+                        </form>
+                    </div>
+
+                }
 
             </div>
         );
@@ -58,3 +71,23 @@ function mapStateToProps(state){
   };
   
 export default connect(mapStateToProps)(SignInView);
+
+/* 
+
+                <div className='SignUpForm'> 
+                    <form /* onSubmit={submitHandler} >
+                    <input placeholder = 'username' />
+                    <input placeholder = 'password' />
+                    <input placeholder = 'email' />
+                    <input placeholder = 'phone number' />
+                    <input placeholder = 'location' />
+                    <input placeholder = 'picture' />
+                    <input placeholder = 'first name' />
+                    <input placeholder = 'last name' />
+                    <Link to='/Profile' Component={ProfileView}>
+                        <button type='submit'> Sign Up </button>
+                    </Link>
+                </form>
+            </div>
+
+*/
