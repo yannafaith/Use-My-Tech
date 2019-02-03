@@ -1,5 +1,5 @@
-export const GET_SUCCESS = 'GET_SUCCESS';
-export const GET_FAILURE = 'GET_FAILURE';
+export const GET_ITEMS_SUCCESS = 'GET_ITEMS_SUCCESS';
+export const GET_ITEMS_FAILURE = 'GET_ITEMS_FAILURE';
 
 /* Need to replace the url to the data
 
