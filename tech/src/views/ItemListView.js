@@ -1,8 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import ItemPageView from './ItemPageView';
-
 class ItemListView extends React.Component {
     state = {
         newItems: []
@@ -19,7 +17,11 @@ class ItemListView extends React.Component {
                 
                 {this.props.items.map(item => {
                     return (
-                        <Link to='/Item' Component={ItemPageView} > 
+                        <Link to={{
+                            pathname: `/item/${item.itemId}`,
+                            state: {
+                                itemClicked: item
+                            }}} > 
                             <div className='LinkToItemView'>
                                 <h3> {item.title} </h3>
                                 <img alt='item'/>

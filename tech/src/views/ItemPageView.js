@@ -11,7 +11,7 @@ class ItemPageView extends React.Component {
     render() {
       return (
           <div>
-              <h3>Placeholder</h3>
+              <h3>{this.props.location.state.itemClicked.title}</h3>
           </div>
       );  
     };

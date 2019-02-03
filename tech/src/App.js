@@ -13,9 +13,9 @@ class App extends Component {
         <h1>Tech Vault Nav</h1>
         <div className='Routes'>
           <Route exact path='/' component={SignInView} />
-          <Route path='/Vault' component={ItemListView} />
-          <Route path='/Item' component={ItemPageView} />
-          <Route path='/Profile' component={ProfileView} />
+          <Route path='/items' component={ItemListView} />
+          <Route path='/item/:id' component={ItemPageView} />
+          <Route path='/profile/:username' component={ProfileView} />
         </div>
       </div>
     );

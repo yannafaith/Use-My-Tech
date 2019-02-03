@@ -2,7 +2,6 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import ItemListView from './ItemListView';
-import ProfileView from './ProfileView';
 
 class SignInView extends React.Component {
     state = {
@@ -34,10 +33,15 @@ class SignInView extends React.Component {
                     this.state.validUser === true ? 
                     <div>
                         <p>Welcome {this.state.username}! Where to next?</p>
-                        <Link to='/Vault' Component={ItemListView}>
+                        <Link to='/items' Component={ItemListView}>
                             <button> Go to Vault </button>
                         </Link> 
-                        <Link to='/Profile' Component={ProfileView}>
+                        <Link to={{ 
+                            pathname: `/profile/${this.state.username}`,
+                            state: {
+                                username: this.state.username
+                            }
+                        }}>
                             <button> Go to Profile </button>
                         </Link> 
                     </div>            
