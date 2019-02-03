@@ -1,6 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
-
+import {Link} from 'react-router-dom';
+import ItemListView from './ItemListView';
+import ProfileView from './ProfileView';
 class SignInView extends React.Component {
     state = {
         newUser: []
@@ -11,21 +13,24 @@ class SignInView extends React.Component {
     // going to need to route to ItemView or Profile View once state is updated 
     // going to need a navbar
 
+
     render() {
         // might turn the forms into components
         return (
             <div className='PageContainer'>
             
                 <div className='SignInForm'>
-                    <form>
+                    <form /* onSubmit={submitHandler} */ >
                         <input placeholder = 'username' />
                         <input placeholder = 'password' />
-                        <button type='submit'> Sign In </button>
+                        <Link to='/Vault' Component={ItemListView}> 
+                            <button type='submit'> Sign In </button>
+                        </Link>
                     </form>
                 </div>
 
                 <div className='SignUpForm'> 
-                    <form>
+                    <form /* onSubmit={submitHandler} */>
                         <input placeholder = 'username' />
                         <input placeholder = 'password' />
                         <input placeholder = 'email' />
@@ -34,7 +39,9 @@ class SignInView extends React.Component {
                         <input placeholder = 'picture' />
                         <input placeholder = 'first name' />
                         <input placeholder = 'last name' />
-                        <button type='submit'> Sign Up </button>
+                        <Link to='/Profile' Component={ProfileView}>
+                            <button type='submit'> Sign Up </button>
+                        </Link>
                     </form>
                 </div>
 
@@ -43,13 +50,10 @@ class SignInView extends React.Component {
     };
 };
 
-
-
 function mapStateToProps(state){
     return {
       users: state.users
     };
   };
-  
   
 export default connect(mapStateToProps)(SignInView);

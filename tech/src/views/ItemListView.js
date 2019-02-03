@@ -1,5 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
+import ItemPageView from './ItemPageView';
 
 class ItemListView extends React.Component {
     state = {
@@ -17,12 +19,14 @@ class ItemListView extends React.Component {
 
                 {this.props.items.map(item => {
                     return (
-                        <div className='LinkToItemView'>
-                            <h3> {item.title} </h3>
-                            <img alt='item Picture'/>
-                            <p> {item.brand} {item.model} {item.label} </p>
-                            <p> daily price: ${item.dailyPrice} <br/> Weekly price: ${item.weeklyPrice} </p>
-                        </div>
+                        <Link to='/Item' Component={ItemPageView}>
+                            <div className='LinkToItemView'>
+                                <h3> {item.title} </h3>
+                                <img alt='item'/>
+                                <p> {item.brand} {item.model} {item.label} </p>
+                                <p> daily price: ${item.dailyPrice} <br/> Weekly price: ${item.weeklyPrice} </p>
+                            </div>
+                        </Link>
                     );
                 })}
                 
