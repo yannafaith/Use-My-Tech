@@ -3,15 +3,7 @@ import {connect} from 'react-redux';
 
 class SignInView extends React.Component {
     state = {
-        username: '',
-        password: '',
-        firstName: '',
-        lasName: '',
-        email: '',
-        phone: '',
-        thumbnail: '',
-        location: '',
-        profilePic: null
+        newUser: []
     };
 
     // going to need changehandlers to record user input

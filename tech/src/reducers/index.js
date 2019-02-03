@@ -5,7 +5,22 @@ import {GET_ITEMS_SUCCESS, GET_ITEMS_FAILURE} from '../actions';
 const initialState = {
     error: null,
     users: [],
-    items: []
+    items: [ 
+        {
+        itemId: 2,
+        owner: {userId: 2, username: 'kaleb'}, // changes
+        title: 'Portable Speaker',
+        brand: 'Bose',
+        model: '5000XL',
+        description: 'blah blah blah blah',
+        dailyPrice: 100,
+        weeklyPrice: 450,
+        label: 'Speaker',
+        images: ['img1', 'img2'],
+        available: true,
+        renters: {userId: 2, username: 'kaleb', rentDates: '2/5/19 - 2/10/19' } //changes
+        }
+    ]
 };
 
 /*
