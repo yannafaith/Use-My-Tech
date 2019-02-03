@@ -1,7 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
+
 class ItemPageView extends React.Component {
+
 
     // item booking takes place here
 

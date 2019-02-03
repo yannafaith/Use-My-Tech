@@ -4,7 +4,18 @@ import {GET_ITEMS_SUCCESS, GET_ITEMS_FAILURE} from '../actions';
 
 const initialState = {
     error: null,
-    users: [],
+    users: [
+        {
+           userId: 0,
+           username: 'techguy90',   
+           password: 'password' ,   
+           firstName: 'Derrick',  
+           lastName: 'Carr',   
+           email: 'derrick@gmail.com',  
+           phone: 5105552587,
+           thumbnail: 'thumb_img',
+        }
+    ],
     items: [ 
         {
         itemId: 0,

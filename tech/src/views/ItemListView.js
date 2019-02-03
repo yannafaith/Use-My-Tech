@@ -16,10 +16,10 @@ class ItemListView extends React.Component {
                     <p>Search bar</p>
                     <button>Add Item <br/> + </button>
                 </div>
-
+                
                 {this.props.items.map(item => {
                     return (
-                        <Link to='/Item' Component={ItemPageView}>
+                        <Link to='/Item' Component={ItemPageView} > 
                             <div className='LinkToItemView'>
                                 <h3> {item.title} </h3>
                                 <img alt='item'/>

@@ -9,7 +9,13 @@ class ProfileView extends React.Component {
     render() {
         return (
             <div>
-                <p>Profile</p>
+                {this.props.users.map(user => {
+                    if (user.userId === 0) {
+                        return (
+                            <p>{user.username}</p>
+                        );
+                    }
+                })}
             </div>
         );
     };

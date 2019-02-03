@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import ItemListView from './ItemListView';
 import ProfileView from './ProfileView';
+
 class SignInView extends React.Component {
     state = {
         newUser: []
@@ -18,7 +19,7 @@ class SignInView extends React.Component {
         // might turn the forms into components
         return (
             <div className='PageContainer'>
-            
+
                 <div className='SignInForm'>
                     <form /* onSubmit={submitHandler} */ >
                         <input placeholder = 'username' />
