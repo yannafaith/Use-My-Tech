@@ -14,12 +14,22 @@ const initialState = {
            email: 'derrick@gmail.com',  
            phone: 5105552587,
            thumbnail: 'thumb_img',
-        }
+        },
+        {
+            userId: 1,
+            username: 'marcy',   
+            password: 'password' ,   
+            firstName: 'Marcine',  
+            lastName: 'Lowther',   
+            email: 'marcy@gmail.com',  
+            phone: 5105552587,
+            thumbnail: 'thumb_img',
+         }
     ],
     items: [ 
         {
         itemId: 0,
-        owner: {userId: 0, username: 'kaleb'}, // changes
+        owner: {userId: 0, username: 'techguy90'}, // changes
         title: 'Portable Speaker',
         brand: 'Bose',
         model: '5000XL',

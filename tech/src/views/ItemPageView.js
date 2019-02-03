@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 
 
 class ItemPageView extends React.Component {
@@ -9,9 +10,22 @@ class ItemPageView extends React.Component {
 
 
     render() {
+      const data = this.props.location.state.itemClicked;
       return (
           <div>
-              <h3>{this.props.location.state.itemClicked.title}</h3>
+              <p>{data.title}</p>
+              <p>{data.brand}</p>
+              <p>{data.model}</p>
+              <p>{data.dailyPrice}</p>
+              <p>{data.weeklyPrice}</p>
+              <Link to={{
+                  pathname: `/profile/${data.owner.username}`,
+                  state: {
+                      username: data.owner.username
+                    }
+                }}>
+                  <p>Renter: {data.owner.username}</p>
+              </Link>
           </div>
       );  
     };
