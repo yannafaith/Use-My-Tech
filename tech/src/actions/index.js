@@ -1,16 +1,24 @@
+import axios from 'axios';
 export const GET_ITEMS_SUCCESS = 'GET_ITEMS_SUCCESS';
 export const GET_ITEMS_FAILURE = 'GET_ITEMS_FAILURE';
+export const GET_USERS_SUCCESS = 'GET_USERS_SUCCESS';
+export const GET_USERS_FAILURE = 'GET_USERS_FAILURE';
 
-/* Need to replace the url to the data
 
-export const getAction = () => dispatch => {
+
+export const getUsers = () => dispatch => {
     axios
-        .get('http://localhost:3333/smurfs')
-        .then(res => dispatch({type: GET_SUCCESS, payload: res.data}))
-        .catch(err => dispatch({type: GET_FAILURE, payload: err}));
+        .get('https://use-my-tech-stuff.herokuapp.com/api/users')
+        .then(res => dispatch({type: GET_USERS_SUCCESS, payload: res.data}))
+        .catch(err => dispatch({type: GET_USERS_FAILURE, payload: err}));
 };
 
+export const getItems = () => dispatch => {
+    axios
+        .get('https://use-my-tech-stuff.herokuapp.com/api/items')
+        .then(res => dispatch({type: GET_ITEMS_SUCCESS, payload: res.data}))
+        .catch(err => dispatch({type: GET_ITEMS_FAILURE, payload: err}));
+};
 
-*/
 
 

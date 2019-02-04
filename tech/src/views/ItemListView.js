@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
-import axios from 'axios';
+import { getItems, getUsers } from '../actions';
 
 const StyledContainer = styled.div`{
     // border: solid slategray 2px;
@@ -41,10 +41,8 @@ class ItemListView extends React.Component {
     };
 
     componentDidMount() {
-        axios.get('https://use-my-tech-stuff.herokuapp.com/api/users')
-        .then(res => console.log(res.data));
-        axios.get('https://use-my-tech-stuff.herokuapp.com/api/items')
-        .then(res => console.log(res.data))
+        this.props.getUsers();
+        this.props.getItems();
     }
 
     render() {
@@ -82,12 +80,15 @@ class ItemListView extends React.Component {
 
 function mapStateToProps(state){
     return {
-      items: state.items
+      items: state.items,
+      users: state.users
     };
   };
   
   
-export default connect(mapStateToProps)(ItemListView);
+export default connect(
+    mapStateToProps, {getItems, getUsers}
+    )(ItemListView);
 
 /*
 <div>
