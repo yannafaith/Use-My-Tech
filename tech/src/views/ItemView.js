@@ -71,7 +71,7 @@ class ItemView extends React.Component {
                             user: clickedUser
                             }
                         }}>
-                        <p>Renter: {clickedUser[0].username}</p>
+                        <p>Renter Profile Link: {clickedUser[0].username}</p>
                     </Link>
                 </StyledItemDetails>
               </StyledTopDiv>
