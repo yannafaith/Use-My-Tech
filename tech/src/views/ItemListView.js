@@ -2,7 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
-import { getItems, getUsers } from '../actions';
+import { getItems, getUsers, postItem } from '../actions';
+import AddItemForm from '../components/AddItemForm';
 
 const StyledContainer = styled.div`{
     // border: solid slategray 2px;
@@ -34,45 +35,73 @@ const StyledLinksToItems = styled.div`{
     };
 }`;
 
-
 class ItemListView extends React.Component {
+
     state = {
-        newItems: []
+        newItem: {
+            available: true,
+            dailyPrice: null,
+            weeklyPrice: null,
+            description: '',
+            label: '',
+            model: '',
+            title: '',
+            renter: 1,
+            owner: 1,
+            itemId: 8
+        },
+        addingItem: false
     };
 
     componentDidMount() {
         this.props.getUsers();
         this.props.getItems();
-    }
+    };
+
+    submitHandler = e => {
+        e.preventDefault();
+        this.props.postItem(this.state.newItem);
+    };
+
+    changeHandler = e => {
+        this.setState({
+            newItem: {...this.state.newItem, [e.target.name]: e.target.value}
+        });
+    };
+
 
     render() {
 
         return (
-            <StyledContainer>
-                
-                {this.props.items.map(item => {
-                    return (
-                        <Link to={{
-                            pathname: `/item/${item.itemId}`,
-                            state: {
-                                itemClicked: item
-                            }}} > 
-                            <StyledLinksToItems>
-                                <h3> {item.title} </h3>
-                                <img src={item.image} alt='item'/>
-                                <p> {item.brand} {item.model} {item.label} </p>
-                                <p> daily price: ${item.dailyPrice} <br/> Weekly price: ${item.weeklyPrice} </p>
-                            </StyledLinksToItems>
-                        </Link>
-                    );
-                })}
-                
-                {/*
-                 make the above a component  
-                 make each card a link to itemView                
-                */}
+            <div>              
 
-            </StyledContainer>
+
+
+                <AddItemForm submitHandler={this.submitHandler} changeHandler={this.changeHandler}/>
+
+                
+
+                <StyledContainer>
+                    
+                    {this.props.items.map(item => {
+                        return (
+                            <Link to={{
+                                pathname: `/item/${item.itemId}`,
+                                state: {
+                                    itemClicked: item
+                                }}} > 
+                                <StyledLinksToItems>
+                                    <h3> {item.title} </h3>
+                                    <img src={item.image} alt='item'/>
+                                    <p> {item.brand} {item.model} {item.label} </p>
+                                    <p> daily price: ${item.dailyPrice} <br/> Weekly price: ${item.weeklyPrice} </p>
+                                </StyledLinksToItems>
+                            </Link>
+                        );
+                    })};
+                </StyledContainer>
+
+            </div>
         );
     };
 };
@@ -87,7 +116,7 @@ function mapStateToProps(state){
   
   
 export default connect(
-    mapStateToProps, {getItems, getUsers}
+    mapStateToProps, {getItems, getUsers, postItem}
     )(ItemListView);
 
 /*
@@ -95,4 +124,13 @@ export default connect(
     <p>Search bar</p>
     <button>Add Item <br/> + </button>
 </div>
+
+<Link to={{
+    pathname: '/add-item',
+    state: {
+        currentUser: ''
+    }}}> <button> Add New Item</button> 
+</Link> 
+
+{(this.state.addingItem && <AddItemForm submitHandler={this.submitHandler} changeHandler={this.changeHandler}/>)}
 */

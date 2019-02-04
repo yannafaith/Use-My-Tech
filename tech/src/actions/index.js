@@ -42,7 +42,7 @@ export const getItems = () => dispatch => {
 
 export const postItem = (item) => dispatch => {
     axios
-        .post('https://use-my-tech-stuff.herokuapp.com/api/items', item)
+        .post('https://use-my-tech-stuff.herokuapp.com/api/items', {...item})
         .then(res => dispatch({type: POST_ITEM_SUCCESS, payload: res.data}))
         .catch(err => dispatch({type: POST_ITEM_FAILURE, payload: err}));
 };
