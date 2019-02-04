@@ -5,12 +5,13 @@ import ItemListView from './views/ItemListView';
 import ItemPageView from './views/ItemPageView';
 import ProfileView from './views/ProfileView';
 import {Route} from 'react-router-dom';
+import Navigation from './components/Navigation';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>Tech Vault Nav</h1>
+        <Navigation />
         <div className='Routes'>
           <Route exact path='/' component={SignInView} />
           <Route path='/items' component={ItemListView} />

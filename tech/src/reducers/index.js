@@ -13,7 +13,6 @@ const initialState = {
            lastName: 'Carr',   
            email: 'derrick@gmail.com',  
            phone: 5105552587,
-           thumbnail: 'thumb_img',
         },
         {
             userId: 1,
@@ -23,13 +22,48 @@ const initialState = {
             lastName: 'Lowther',   
             email: 'marcy@gmail.com',  
             phone: 5105552587,
-            thumbnail: 'thumb_img',
-         }
+         },
+         {
+            userId: 2,
+            username: 'lolly',   
+            password: 'password' ,   
+            firstName: 'loline',  
+            lastName: 'sage',   
+            email: 'lolly@gmail.com',  
+            phone: 5105552587,
+         },
+         {
+            userId: 3,
+            username: 'dave',   
+            password: 'password' ,   
+            firstName: 'david',  
+            lastName: 'brown',   
+            email: 'dave@gmail.com',  
+            phone: 5105552587,
+         },
+         {
+            userId: 4,
+            username: 'rex',   
+            password: 'password' ,   
+            firstName: 'ronaldo',  
+            lastName: 'hue',   
+            email: 'rex@gmail.com',  
+            phone: 5105552587,
+         },
+         {
+            userId: 5,
+            username: 'sam',   
+            password: 'password' ,   
+            firstName: 'samantha',  
+            lastName: 'jones',   
+            email: 'sammy@gmail.com',  
+            phone: 5105552587,
+         },
     ],
     items: [ 
         {
         itemId: 0,
-        owner: {userId: 0, username: 'techguy90'}, // changes
+        owner: 5,
         title: 'Portable Speaker',
         brand: 'Bose',
         model: '5000XL',
@@ -43,7 +77,7 @@ const initialState = {
         },
         {
         itemId: 1,
-        owner: {userId: 1, username: 'marcy'}, // changes
+        owner: 4,
         title: 'Fog Machine',
         brand: 'PartyPack',
         model: '200 Beta',
@@ -54,44 +88,66 @@ const initialState = {
         images: ['img1', 'img2'],
         available: true,
         renters: {userId: 2, renterFirstName: 'marcy', rentDates: '2/5/19 - 2/10/19' } //changes
-        }
+        },
+        {
+        itemId: 2,
+        owner: 3,
+        title: 'Fog Machine',
+        brand: 'PartyPack',
+        model: '200 Beta',
+        description: 'ha ha ha ha',
+        dailyPrice: 100,
+        weeklyPrice: 450,
+        label: 'Effect Maker',
+        images: ['img1', 'img2'],
+        available: true,
+        renters: {userId: 2, renterFirstName: 'marcy', rentDates: '2/5/19 - 2/10/19' } //changes
+        },
+        {
+        itemId: 3,
+        owner: 2,
+        title: 'Fog Machine',
+        brand: 'PartyPack',
+        model: '200 Beta',
+        description: 'ha ha ha ha',
+        dailyPrice: 100,
+        weeklyPrice: 450,
+        label: 'Effect Maker',
+        images: ['img1', 'img2'],
+        available: true,
+        renters: {userId: 2, renterFirstName: 'marcy', rentDates: '2/5/19 - 2/10/19' } //changes
+        },
+        {
+        itemId: 4,
+        owner: 1,
+        title: 'Fog Machine',
+        brand: 'PartyPack',
+        model: '200 Beta',
+        description: 'ha ha ha ha',
+        dailyPrice: 100,
+        weeklyPrice: 450,
+        label: 'Effect Maker',
+        images: ['img1', 'img2'],
+        available: true,
+        renters: {userId: 2, renterFirstName: 'marcy', rentDates: '2/5/19 - 2/10/19' } //changes
+       },
+       {
+        itemId: 5,
+        owner: 0,
+        title: 'Fog Machine',
+        brand: 'PartyPack',
+        model: '200 Beta',
+        description: 'ha ha ha ha',
+        dailyPrice: 100,
+        weeklyPrice: 450,
+        label: 'Effect Maker',
+        images: ['img1', 'img2'],
+        available: true,
+        renters: {userId: 2, renterFirstName: 'marcy', rentDates: '2/5/19 - 2/10/19' } //changes
+       }
     ]
 };
 
-/*
-
-users = [
-    {
-       userId: 1,
-       username: 'techguy90',
-       firstName: 'Derrick',
-       lasName: 'Carr',
-       email: 'derrick@gmail.com',
-       phone: '602 373 7645'
-       thumbnail: '',
-       location: '',
-       profilePic: null
-    },
-];
-
-items = [
-    {
-        itemId: 2,
-        owner: 2,
-        title: 'Portable Speaker',
-        brand: 'Bose',
-        model: '5000XL',
-        description: 'blah blah blah blah',
-        dailyPrice: 100,
-        weeklyPrice: 450,
-        label: 'Speaker',
-        images: ['img1', 'img2']
-        available: true,
-        renter: 1,
-    };
-];
-
-*/
 
 const reducer = (state = initialState, action) => {
     switch(action.type) {

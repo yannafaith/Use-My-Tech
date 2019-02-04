@@ -7,18 +7,14 @@ class ProfileView extends React.Component {
     // if profile belongs to user, have edit profile option
 
     render() {
-        const data = this.props.location.state;
+        const data = this.props.location.state.user;
         return (
             <div>
-                {this.props.users.map(user => {
-                    if (user.username === data.username) {
-                        return (
-                            <div>
-                                {user.username}
-                            </div>
-                        );
-                    };
-                })}
+                <p>{data.username}</p>
+                <p>{data.firstName}</p>
+                <p>{data.lastName}</p>
+                <p>{data.email}</p>
+                <p>{data.phone}</p>
             </div>
         );
     };

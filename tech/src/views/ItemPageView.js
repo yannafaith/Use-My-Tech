@@ -11,6 +11,12 @@ class ItemPageView extends React.Component {
 
     render() {
       const data = this.props.location.state.itemClicked;
+
+      // this returns an array with one object 
+       let clickedUser = this.props.users.filter(user => {
+          if (user.userId === data.owner) return user
+      }); 
+
       return (
           <div>
               <p>{data.title}</p>
@@ -19,12 +25,12 @@ class ItemPageView extends React.Component {
               <p>{data.dailyPrice}</p>
               <p>{data.weeklyPrice}</p>
               <Link to={{
-                  pathname: `/profile/${data.owner.username}`,
+                  pathname: `/profile/${clickedUser[0].username}`,
                   state: {
-                      username: data.owner.username
+                      user: clickedUser[0]
                     }
                 }}>
-                  <p>Renter: {data.owner.username}</p>
+                  <p>Renter: {clickedUser[0].username}</p>
               </Link>
           </div>
       );  
@@ -33,7 +39,8 @@ class ItemPageView extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        items: state.items
+        items: state.items,
+        users: state.users
     };
 };
 
