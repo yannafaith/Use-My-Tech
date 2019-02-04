@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
+import axios from 'axios';
 
 const StyledContainer = styled.div`{
     // border: solid slategray 2px;
@@ -38,6 +39,13 @@ class ItemListView extends React.Component {
     state = {
         newItems: []
     };
+
+    componentDidMount() {
+        axios.get('https://use-my-tech-stuff.herokuapp.com/api/users')
+        .then(res => console.log(res.data));
+        axios.get('https://use-my-tech-stuff.herokuapp.com/api/items')
+        .then(res => console.log(res.data))
+    }
 
     render() {
 

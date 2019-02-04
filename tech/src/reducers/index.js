@@ -79,7 +79,6 @@ const initialState = {
         dailyPrice: 100,
         weeklyPrice: 450,
         label: 'Speaker',
-        images: ['img1', 'img2'],
         available: true,
         image: faker.image.technics()
         },
@@ -93,7 +92,6 @@ const initialState = {
         dailyPrice: 100,
         weeklyPrice: 450,
         label: 'Effect Maker',
-        images: ['img1', 'img2'],
         available: true,
         image: faker.image.technics()
         },
@@ -107,7 +105,6 @@ const initialState = {
         dailyPrice: 100,
         weeklyPrice: 450,
         label: 'Effect Maker',
-        images: ['img1', 'img2'],
         available: true,
         image: faker.image.technics()
         },
@@ -121,7 +118,6 @@ const initialState = {
         dailyPrice: 100,
         weeklyPrice: 450,
         label: 'Effect Maker',
-        images: ['img1', 'img2'],
         available: true,
         image: faker.image.technics()
         },
@@ -135,7 +131,6 @@ const initialState = {
         dailyPrice: 100,
         weeklyPrice: 450,
         label: 'Effect Maker',
-        images: ['img1', 'img2'],
         available: true,
         image: faker.image.technics()
        },
@@ -149,7 +144,6 @@ const initialState = {
         dailyPrice: 100,
         weeklyPrice: 450,
         label: 'Effect Maker',
-        images: ['img1', 'img2'],
         available: true,
         image: faker.image.technics()
        }
