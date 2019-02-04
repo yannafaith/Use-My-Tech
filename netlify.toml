@@ -1,2 +1,3 @@
 [build]
-base = "Front-End-Yanna-Chandler"
+  publish = "public"
+  command = "yarn build"
