@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import styled from 'styled-components';
+import {getUsers}  from '../actions';
 
 const StyledProfileContainer = styled.div`{
     border: solid slategray 2px;
@@ -42,8 +43,12 @@ class ProfileView extends React.Component {
     // display user items, requests, and reviews
     // if profile belongs to user, have edit profile option
 
+    componentDidMount() {
+        this.props.getUsers();
+    };
+
     render() {
-        const data = this.props.location.state.user;
+        const data = this.props.location.state.user[0];
         return (
             <StyledProfileContainer>
                 <StyledTopDiv>
@@ -67,4 +72,4 @@ function mapStateToProps(state) {
     };
 };
 
-export default connect(mapStateToProps)(ProfileView);
+export default connect(mapStateToProps, {getUsers})(ProfileView);

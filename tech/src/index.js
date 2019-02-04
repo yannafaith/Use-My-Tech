@@ -5,7 +5,7 @@ import App from './App';
 import reducer from './reducers'
 
 import thunk from 'redux-thunk';
-import logger from 'redux-thunk';
+import logger from 'redux-logger';
 
 
 import {createStore, applyMiddleware} from 'redux';

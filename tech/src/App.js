@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import SignInView from './views/SignInView';
 import ItemListView from './views/ItemListView';
-import ItemPageView from './views/ItemPageView';
+import ItemView from './views/ItemView';
 import ProfileView from './views/ProfileView';
 import {Route} from 'react-router-dom';
 import Navigation from './components/Navigation';
@@ -22,7 +22,7 @@ class App extends Component {
         <div className='Routes'>
           <Route exact path='/' component={SignInView} />
           <Route path='/items' component={ItemListView} />
-          <Route path='/item/:id' component={ItemPageView} />
+          <Route path='/item/:id' component={ItemView} />
           <Route path='/profile/:username' component={ProfileView} />
         </div>
       </div>

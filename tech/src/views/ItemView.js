@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
+import { getUsers, getItems } from '../actions';
 
 const StyledItemContainer = styled.div`{
     border: solid slategray 2px;
@@ -39,7 +40,7 @@ const StyledTopDiv = styled.div`{
 
 
 
-class ItemPageView extends React.Component {
+class ItemView extends React.Component {
 
 
     // item booking takes place here
@@ -67,10 +68,10 @@ class ItemPageView extends React.Component {
                     <Link to={{
                         pathname: `/profile/${clickedUser[0].username}`,
                         state: {
-                            user: clickedUser[0]
+                            user: clickedUser
                             }
                         }}>
-                        <p>Renter: {clickedUser[0].username}</p>
+                        <p>Renter Profile Link: {clickedUser[0].username}</p>
                     </Link>
                 </StyledItemDetails>
               </StyledTopDiv>
@@ -86,5 +87,5 @@ function mapStateToProps(state) {
     };
 };
 
-export default connect(mapStateToProps)(ItemPageView);
+export default connect(mapStateToProps, {getUsers, getItems})(ItemView);
 
