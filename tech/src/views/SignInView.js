@@ -2,6 +2,37 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import ItemListView from './ItemListView';
+import styled from 'styled-components';
+
+const StyledContainer = styled.div`{
+    //border: solid slategray 1px;
+    height: 325px;
+    width: 90%;
+    margin-left: 5%;
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}`;
+
+const StyledForm = styled.div`{
+    form {
+        display: flex;
+        flex-direction: column;
+        border: solid slategray 1px;
+        width: 500px;
+        justify-content: center;
+        margin-top: 5%;
+            input {
+                height: 20px;
+            };
+            button {
+                width: 100px;
+                height: 20px;
+                align-self: center
+            };
+    };
+}`;
+
 
 class SignInView extends React.Component {
     state = {
@@ -18,7 +49,9 @@ class SignInView extends React.Component {
     };
 
     submitHandler = e => {
-        this.setState({validUser: true});
+        !(this.state.username === '' || this.state.password === '') ?
+        this.setState({validUser: true}) : alert('must enter username and password');
+        e.preventDefault();
     };
 
     render() {
@@ -28,12 +61,12 @@ class SignInView extends React.Component {
         });
 
         return (
-            <div className='PageContainer'>
+            <div>
 
                 {
 
                     this.state.validUser === true ? 
-                    <div>
+                    <StyledContainer>
                         <p>Welcome {this.state.username}! Where to next?</p>
                         <Link to='/items' Component={ItemListView}>
                             <button> Go to Vault </button>
@@ -46,25 +79,54 @@ class SignInView extends React.Component {
                         }}>
                             <button> Go to Profile </button>
                         </Link> 
-                    </div>            
+                    </StyledContainer>            
 
                     : 
-                    <div className='SignInForm'>
-                        <form onSubmit={this.submitHandler} >
-                            <input 
-                                placeholder = 'username' 
-                                name = 'username' 
-                                onChange = {this.changeHandler} />
-                            <input 
-                                placeholder = 'password' 
-                                name = 'password' 
-                                onChange = {this.changeHandler} />
-                            <button type='submit'>Sign In</button>
-                        </form>
-                    </div>
-
+                    <StyledContainer>
+                        <StyledForm>
+                            <form onSubmit={this.submitHandler} >
+                                <input 
+                                    placeholder = 'username' 
+                                    name = 'username' 
+                                    onChange = {this.changeHandler} />
+                                <input 
+                                    placeholder = 'password' 
+                                    name = 'password' 
+                                    onChange = {this.changeHandler} />
+                                <button type='submit'>Sign In!</button>
+                            </form>
+                        </StyledForm>
+                        <StyledForm>
+                            <form onSubmit={this.submitHandler} >
+                                <input 
+                                    placeholder = 'username'
+                                    name = 'username'
+                                    onChange = {this.changeHandler} />
+                                <input 
+                                    placeholder = 'password'
+                                    name = 'password'
+                                    onChange = {this.changeHandler} />
+                                <input 
+                                    placeholder = 'email'
+                                    name = 'email'
+                                    onChange = {this.changeHandler} />
+                                <input 
+                                    placeholder = 'phone'
+                                    name = 'phone'
+                                    onChange = {this.changeHandler} />
+                                <input 
+                                    placeholder = 'first name'
+                                    name = 'firstName'
+                                    onChange = {this.changeHandler} />
+                                <input 
+                                    placeholder = 'last name'
+                                    name = 'lastName'
+                                    onChange = {this.changeHandler} />
+                                <button type='submit'>Sign Up!</button>
+                            </form>
+                        </StyledForm>
+                    </StyledContainer>
                 }
-
             </div>
         );
     };

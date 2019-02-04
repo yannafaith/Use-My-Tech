@@ -2,6 +2,7 @@ import {GET_ITEMS_SUCCESS, GET_ITEMS_FAILURE} from '../actions';
 import faker from 'faker';
 
 // this controls store state
+// need to add location to users
 
 const initialState = {
     error: null,
