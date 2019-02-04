@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import ItemListView from './ItemListView';
 import styled from 'styled-components';
+import { getUsers } from '../actions';
 
 const StyledContainer = styled.div`{
     //border: solid slategray 1px;
@@ -42,6 +43,10 @@ class SignInView extends React.Component {
         password: ''
     };
 
+    componentDidMount() {
+        this.props.getUsers()
+    }
+
     changeHandler = e => {
         this.setState({
             [e.target.name]: e.target.value
@@ -56,9 +61,7 @@ class SignInView extends React.Component {
 
     render() {
 
-        const loggedInUser = this.props.users.map(user => {
-            if (user.username === this.state.username) return user
-        });
+       const loggedInUser =  this.props.users.filter(user =>(user.username === this.state.username));
 
         return (
             <div>
@@ -74,7 +77,7 @@ class SignInView extends React.Component {
                         <Link to={{ 
                             pathname: `/profile/${this.state.username}`,
                             state: {
-                                user: loggedInUser[0]
+                                user: loggedInUser
                             }
                         }}>
                             <button> Go to Profile </button>
@@ -138,7 +141,7 @@ function mapStateToProps(state){
     };
   };
   
-export default connect(mapStateToProps)(SignInView);
+export default connect(mapStateToProps, {getUsers})(SignInView);
 
 /* 
 

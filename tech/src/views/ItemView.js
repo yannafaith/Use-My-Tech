@@ -66,12 +66,12 @@ class ItemView extends React.Component {
                     <p> Daily Price: {data.dailyPrice}</p>
                     <p> Weekly Price: {data.weeklyPrice}</p>
                     <Link to={{
-                        pathname: `/profile/${clickedUser.username}`,
+                        pathname: `/profile/${clickedUser[0].username}`,
                         state: {
                             user: clickedUser
                             }
                         }}>
-                        <p>Renter: {clickedUser.username}</p>
+                        <p>Renter: {clickedUser[0].username}</p>
                     </Link>
                 </StyledItemDetails>
               </StyledTopDiv>

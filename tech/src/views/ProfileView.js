@@ -48,7 +48,7 @@ class ProfileView extends React.Component {
     };
 
     render() {
-        const data = this.props.location.state.user;
+        const data = this.props.location.state.user[0];
         return (
             <StyledProfileContainer>
                 <StyledTopDiv>
