@@ -1,7 +1,8 @@
 import {Link} from 'react-router-dom';
 import React from 'react';
+import {connect} from 'react-redux';
 
-const Navigation = () => {
+const Navigation = (props) => {
 
         return (
             <div>
@@ -10,6 +11,10 @@ const Navigation = () => {
         );
     };
 
+function mapStateToProps(state) {
+    return {
+        users: state.users
+    };
+};
 
-
-export default Navigation;
+export default connect(mapStateToProps)(Navigation);

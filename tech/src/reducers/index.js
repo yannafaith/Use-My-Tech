@@ -1,4 +1,5 @@
 import {GET_ITEMS_SUCCESS, GET_ITEMS_FAILURE} from '../actions';
+import faker from 'faker';
 
 // this controls store state
 
@@ -13,6 +14,7 @@ const initialState = {
            lastName: 'Carr',   
            email: 'derrick@gmail.com',  
            phone: 5105552587,
+           image: faker.image.avatar()
         },
         {
             userId: 1,
@@ -22,6 +24,7 @@ const initialState = {
             lastName: 'Lowther',   
             email: 'marcy@gmail.com',  
             phone: 5105552587,
+            image: faker.image.avatar()
          },
          {
             userId: 2,
@@ -31,6 +34,7 @@ const initialState = {
             lastName: 'sage',   
             email: 'lolly@gmail.com',  
             phone: 5105552587,
+            image: faker.image.avatar()
          },
          {
             userId: 3,
@@ -40,6 +44,7 @@ const initialState = {
             lastName: 'brown',   
             email: 'dave@gmail.com',  
             phone: 5105552587,
+            image: faker.image.avatar()
          },
          {
             userId: 4,
@@ -49,6 +54,7 @@ const initialState = {
             lastName: 'hue',   
             email: 'rex@gmail.com',  
             phone: 5105552587,
+            image: faker.image.avatar()
          },
          {
             userId: 5,
@@ -58,6 +64,7 @@ const initialState = {
             lastName: 'jones',   
             email: 'sammy@gmail.com',  
             phone: 5105552587,
+            image: faker.image.avatar()
          },
     ],
     items: [ 
@@ -73,7 +80,7 @@ const initialState = {
         label: 'Speaker',
         images: ['img1', 'img2'],
         available: true,
-        renters: {userId: 2, renterFirstName: 'kaleb', rentDates: '2/5/19 - 2/10/19' } //changes
+        image: faker.image.technics()
         },
         {
         itemId: 1,
@@ -87,7 +94,7 @@ const initialState = {
         label: 'Effect Maker',
         images: ['img1', 'img2'],
         available: true,
-        renters: {userId: 2, renterFirstName: 'marcy', rentDates: '2/5/19 - 2/10/19' } //changes
+        image: faker.image.technics()
         },
         {
         itemId: 2,
@@ -101,7 +108,7 @@ const initialState = {
         label: 'Effect Maker',
         images: ['img1', 'img2'],
         available: true,
-        renters: {userId: 2, renterFirstName: 'marcy', rentDates: '2/5/19 - 2/10/19' } //changes
+        image: faker.image.technics()
         },
         {
         itemId: 3,
@@ -115,7 +122,7 @@ const initialState = {
         label: 'Effect Maker',
         images: ['img1', 'img2'],
         available: true,
-        renters: {userId: 2, renterFirstName: 'marcy', rentDates: '2/5/19 - 2/10/19' } //changes
+        image: faker.image.technics()
         },
         {
         itemId: 4,
@@ -129,7 +136,7 @@ const initialState = {
         label: 'Effect Maker',
         images: ['img1', 'img2'],
         available: true,
-        renters: {userId: 2, renterFirstName: 'marcy', rentDates: '2/5/19 - 2/10/19' } //changes
+        image: faker.image.technics()
        },
        {
         itemId: 5,
@@ -143,7 +150,7 @@ const initialState = {
         label: 'Effect Maker',
         images: ['img1', 'img2'],
         available: true,
-        renters: {userId: 2, renterFirstName: 'marcy', rentDates: '2/5/19 - 2/10/19' } //changes
+        image: faker.image.technics()
        }
     ]
 };

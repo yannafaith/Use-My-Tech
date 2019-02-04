@@ -10,21 +10,23 @@ class SignInView extends React.Component {
         username: '',
         password: ''
     };
-    
-    // going to need a navbar
 
     changeHandler = e => {
         this.setState({
-            [e.target.name]: e.target.value,
+            [e.target.name]: e.target.value
         });
     };
 
     submitHandler = e => {
         this.setState({validUser: true});
-        e.preventDefault();
     };
 
     render() {
+
+        const loggedInUser = this.props.users.map(user => {
+            if (user.username === this.state.username) return user
+        });
+
         return (
             <div className='PageContainer'>
 
@@ -39,7 +41,7 @@ class SignInView extends React.Component {
                         <Link to={{ 
                             pathname: `/profile/${this.state.username}`,
                             state: {
-                                username: this.state.username
+                                user: loggedInUser[0]
                             }
                         }}>
                             <button> Go to Profile </button>
