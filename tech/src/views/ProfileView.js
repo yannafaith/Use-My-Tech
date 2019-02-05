@@ -111,5 +111,3 @@ function mapStateToProps(state) {
 };
 
 export default connect(mapStateToProps, {getUsers, getItems, deleteItem})(ProfileView);
-
-// test
