@@ -1,7 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import styled from 'styled-components';
-import {getUsers, getItems, deleteItem}  from '../actions';
+import {getUsers, getItems, deleteItem, postItem}  from '../actions';
+import {Link} from 'react-router-dom';
+import AddItemForm from '../components/AddItemForm';
 
 const StyledProfileContainer = styled.div`{
     border: solid slategray 2px;
@@ -65,9 +67,36 @@ class ProfileView extends React.Component {
     // display user items, requests, and reviews
     // if profile belongs to user, have edit profile option
 
+    state = {
+        newItem: {
+            available: true,
+            dailyPrice: null,
+            weeklyPrice: null,
+            description: '',
+            label: '',
+            model: '',
+            title: '',
+            renter: 1,
+            owner: 1
+        },
+        addingItem: false
+    };
+
     componentDidMount() {
         this.props.getUsers();
         this.props.getItems();
+    };
+
+
+    submitHandler = e => {
+        e.preventDefault();
+        this.props.postItem(this.state.newItem);
+    };
+
+    changeHandler = e => {
+        this.setState({
+            newItem: {...this.state.newItem, [e.target.name]: e.target.value}
+        });
     };
     
     render() {
@@ -85,6 +114,7 @@ class ProfileView extends React.Component {
                         </StyledUserDetails>
                     </StyledTopDiv>
                     <StyledUserItemsContainer>
+                        <AddItemForm submitHandler={this.submitHandler} changeHandler={this.changeHandler}/>
                         {this.props.items.map(item => {
                             if (item.owner === data.userId) {return (
                                 <StyledUserItem>
@@ -93,8 +123,17 @@ class ProfileView extends React.Component {
                                     <p> {item.brand} {item.model} {item.label} </p>
                                     <p> daily price: ${item.dailyPrice} <br/> Weekly price: ${item.weeklyPrice} </p>
                                     {sessionStorage.username === this.props.match.params.username && 
-                                    <button onClick={() => this.props.deleteItem(item.itemId)} >Garbage</button>}
-                                    <Link>Update Item</Link>
+                                    <div>
+                                        <button onClick={() => this.props.deleteItem(item.itemId)} >Garbage</button>
+                                        <Link to={{
+                                            pathname: `/item/${item.itemId}`,
+                                            state: {
+                                                itemClicked: item,
+                                                updatingItem: true
+                                            }
+                                            }}><button>Update Item</button>
+                                        </Link>
+                                    </div>}
                                 </StyledUserItem>
                             );}
                         })}
@@ -113,4 +152,4 @@ function mapStateToProps(state) {
     };
 };
 
-export default connect(mapStateToProps, {getUsers, getItems, deleteItem})(ProfileView);
+export default connect(mapStateToProps, {getUsers, getItems, deleteItem, postItem})(ProfileView);

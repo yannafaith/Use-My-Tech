@@ -75,6 +75,7 @@ class ItemView extends React.Component {
                     </Link>
                 </StyledItemDetails>
               </StyledTopDiv>
+              {/*this.props.location.state.updatingItem && <div>UPDATE</div>*/}
           </StyledItemContainer>
       );  
     };

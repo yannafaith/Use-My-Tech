@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 import { getItems, getUsers, postItem } from '../actions';
-import AddItemForm from '../components/AddItemForm';
 
 const StyledContainer = styled.div`{
     // border: solid slategray 2px;
@@ -37,51 +36,16 @@ const StyledLinksToItems = styled.div`{
 
 class ItemListView extends React.Component {
 
-    state = {
-        newItem: {
-            available: true,
-            dailyPrice: null,
-            weeklyPrice: null,
-            description: '',
-            label: '',
-            model: '',
-            title: '',
-            renter: 1,
-            owner: 1
-        },
-        addingItem: false
-    };
-
     componentDidMount() {
         this.props.getUsers();
         this.props.getItems();
-    };
-
-
-    submitHandler = e => {
-        e.preventDefault();
-        this.props.postItem(this.state.newItem);
-    };
-
-    changeHandler = e => {
-        this.setState({
-            newItem: {...this.state.newItem, [e.target.name]: e.target.value}
-        });
     };
 
     render() {
 
         return (
             <div>              
-
-
-
-                <AddItemForm submitHandler={this.submitHandler} changeHandler={this.changeHandler}/>
-
-                
-
                 <StyledContainer>
-                    
                     {this.props.items.map(item => {
                         return (
                             <Link to={{
@@ -115,7 +79,7 @@ function mapStateToProps(state){
   
   
 export default connect(
-    mapStateToProps, {getItems, getUsers, postItem}
+    mapStateToProps, {getItems, getUsers}
     )(ItemListView);
 
 /*
