@@ -56,6 +56,8 @@ class SignInView extends React.Component {
         !(this.state.username === '' || this.state.password === '') ?
         this.setState({validUser: true}) : alert('must enter username and password');
         e.preventDefault();
+        sessionStorage.setItem('username', this.state.username);
+        console.log(sessionStorage)
     };
 
     render() {
@@ -147,23 +149,3 @@ function mapStateToProps(state){
   };
   
 export default connect(mapStateToProps, {getUsers})(SignInView);
-
-/* 
-
-                <div className='SignUpForm'> 
-                    <form /* onSubmit={submitHandler} >
-                    <input placeholder = 'username' />
-                    <input placeholder = 'password' />
-                    <input placeholder = 'email' />
-                    <input placeholder = 'phone number' />
-                    <input placeholder = 'location' />
-                    <input placeholder = 'picture' />
-                    <input placeholder = 'first name' />
-                    <input placeholder = 'last name' />
-                    <Link to='/Profile' Component={ProfileView}>
-                        <button type='submit'> Sign Up </button>
-                    </Link>
-                </form>
-            </div>
-
-*/

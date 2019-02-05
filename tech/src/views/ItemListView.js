@@ -47,7 +47,7 @@ class ItemListView extends React.Component {
             model: '',
             title: '',
             renter: 1,
-            owner: 5
+            owner: 1
         },
         addingItem: false
     };
@@ -57,9 +57,11 @@ class ItemListView extends React.Component {
         this.props.getItems();
     };
 
+
     submitHandler = e => {
         e.preventDefault();
         this.props.postItem(this.state.newItem);
+        this.props.getItems();
     };
 
     changeHandler = e => {

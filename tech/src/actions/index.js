@@ -56,7 +56,7 @@ export const postUser = (user) => dispatch => {
 
 export const deleteItem = (itemId) => dispatch => {
     axios
-        .delete('https://use-my-tech-stuff.herokuapp.com/api/items', itemId)
+        .delete(`https://use-my-tech-stuff.herokuapp.com/api/items/${itemId}`)
         .then(res => dispatch({type: DELETE_ITEM_SUCCESS, payload: res.data}))
         .catch(err => dispatch({type: DELETE_ITEM_FAILURE, payload: err}));
 };

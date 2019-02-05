@@ -69,7 +69,7 @@ class ProfileView extends React.Component {
         this.props.getUsers();
         this.props.getItems();
     };
-
+    
     render() {
         const data = this.props.location.state.user[0];
         return (
@@ -92,6 +92,8 @@ class ProfileView extends React.Component {
                                     <img src={item.image} alt='item'/>
                                     <p> {item.brand} {item.model} {item.label} </p>
                                     <p> daily price: ${item.dailyPrice} <br/> Weekly price: ${item.weeklyPrice} </p>
+                                    {sessionStorage.username === this.props.match.params.username && 
+                                    <button onClick={() => this.props.deleteItem(item.itemId)} >Garbage</button>}
                                 </StyledUserItem>
                             );}
                         })}
