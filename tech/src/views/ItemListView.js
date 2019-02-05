@@ -61,7 +61,6 @@ class ItemListView extends React.Component {
     submitHandler = e => {
         e.preventDefault();
         this.props.postItem(this.state.newItem);
-        this.props.getItems();
     };
 
     changeHandler = e => {

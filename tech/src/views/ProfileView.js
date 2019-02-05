@@ -94,6 +94,7 @@ class ProfileView extends React.Component {
                                     <p> daily price: ${item.dailyPrice} <br/> Weekly price: ${item.weeklyPrice} </p>
                                     {sessionStorage.username === this.props.match.params.username && 
                                     <button onClick={() => this.props.deleteItem(item.itemId)} >Garbage</button>}
+                                    <Link>Update Item</Link>
                                 </StyledUserItem>
                             );}
                         })}
