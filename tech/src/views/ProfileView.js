@@ -79,7 +79,7 @@ class ProfileView extends React.Component {
                         <img src={data.image} alt='avatar' />
                         <StyledUserDetails>
                             <h2>{data.username}</h2>
-                            <p>name: {data.firstName} {data.lastName}</p>
+                            <p>name: {data.firstname} {data.lastname}</p>
                             <p>email: {data.email}</p>
                             <p>phone number: {data.phone}</p>
                         </StyledUserDetails>
