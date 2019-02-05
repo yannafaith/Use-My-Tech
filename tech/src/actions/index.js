@@ -49,10 +49,25 @@ export const postItem = (item) => dispatch => {
 
 export const postUser = (user) => dispatch => {
     axios
-        .post('https://use-my-tech-stuff.herokuapp.com/api/users', user)
+        .post('https://use-my-tech-stuff.herokuapp.com/api/users', {...user})
         .then(res => dispatch({type: POST_ITEM_SUCCESS, payload: res.data}))
         .catch(err => dispatch({type: POST_ITEM_FAILURE, payload: err}));
 };
+
+export const deleteItem = (itemId) => dispatch => {
+    axios
+        .delete('https://use-my-tech-stuff.herokuapp.com/api/items', itemId)
+        .then(res => dispatch({type: DELETE_ITEM_SUCCESS, payload: res.data}))
+        .catch(err => dispatch({type: DELETE_ITEM_FAILURE, payload: err}));
+};
+
+export const putItem = (userId) => dispatch => {
+    axios
+        .put('https://use-my-tech-stuff.herokuapp.com/api/items', userId)
+        .then(res => dispatch({type: PUT_ITEM_SUCCESS, payload: res.data}))
+        .catch(err => dispatch({type: PUT_ITEM_FAILURE, payload: err}));
+};
+
 
 // need to write delete and update item action creators
 

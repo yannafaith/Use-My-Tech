@@ -37,7 +37,7 @@ const AddItemForm = (props) => {
                 <button type='submit'>Add Item</button>
             </form>
         </div>
-    );
+    )
 };
 
 export default AddItemForm; 

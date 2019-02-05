@@ -39,7 +39,7 @@ const reducer = (state = initialState, action) => {
             };
         case POST_USER_SUCCESS: 
             return {
-                ...state, users: action.payload
+                ...state, error: ''
             };
         case POST_USER_FAILURE: 
             return {
@@ -48,7 +48,7 @@ const reducer = (state = initialState, action) => {
         //  ===================================
         case DELETE_ITEM_SUCCESS:
             return {
-                ...state, error: '', items: action.payload
+                ...state, error: '',
             };
         case DELETE_ITEM_FAILURE: 
             return {
@@ -56,7 +56,7 @@ const reducer = (state = initialState, action) => {
             };
         case PUT_ITEM_SUCCESS:
             return {
-                ...state, error: '', items: action.payload
+                ...state, error: '',
             };
         case PUT_ITEM_FAILURE: 
             return {

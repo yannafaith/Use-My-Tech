@@ -47,8 +47,7 @@ class ItemListView extends React.Component {
             model: '',
             title: '',
             renter: 1,
-            owner: 1,
-            itemId: 8
+            owner: 5
         },
         addingItem: false
     };
@@ -68,7 +67,6 @@ class ItemListView extends React.Component {
             newItem: {...this.state.newItem, [e.target.name]: e.target.value}
         });
     };
-
 
     render() {
 
@@ -98,7 +96,7 @@ class ItemListView extends React.Component {
                                 </StyledLinksToItems>
                             </Link>
                         );
-                    })};
+                    })}
                 </StyledContainer>
 
             </div>
