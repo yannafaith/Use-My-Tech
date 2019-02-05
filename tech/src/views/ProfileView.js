@@ -126,7 +126,7 @@ class ProfileView extends React.Component {
                                     <div>
                                         <button onClick={() => this.props.deleteItem(item.itemId)} >Garbage</button>
                                         <Link to={{
-                                            pathname: `/item/${item.itemId}`,
+                                            pathname: `/item/${item.itemId}/edit`,
                                             state: {
                                                 itemClicked: item,
                                                 updatingItem: true
