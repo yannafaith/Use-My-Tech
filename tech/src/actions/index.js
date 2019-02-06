@@ -76,13 +76,14 @@ export const postUser = user => dispatch => {
       .catch(err => dispatch({ type: POST_ITEM_FAILURE, payload: err }));
 };
 
-export const deleteItem = itemId => dispatch => {
+export const deleteItem = (itemId) => dispatch => {
    axios
-      .delete(`https://use-my-tech-stuff.herokuapp.com/api/items/${itemId}`)
-      .then(res => dispatch({ type: DELETE_ITEM_SUCCESS, payload: res.data }))
-      .catch(err => dispatch({ type: DELETE_ITEM_FAILURE, payload: err }));
+       .delete(`https://use-my-tech-stuff.herokuapp.com/api/items/${itemId}`)
+       .then(res => {
+           dispatch({type: DELETE_ITEM_SUCCESS, payload: res.data});
+           dispatch(getItems())})
+       .catch(err => dispatch({type: DELETE_ITEM_FAILURE, payload: err}));
 };
-
 export const putItem = userId => dispatch => {
    axios
       .put('https://use-my-tech-stuff.herokuapp.com/api/items', userId)

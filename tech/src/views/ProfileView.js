@@ -149,7 +149,7 @@ class ProfileView extends React.Component {
                                     daily price: ${item.dailyPrice} <br />{' '}
                                     Weekly price: ${item.weeklyPrice}{' '}
                                  </p>
-                                 {sessionStorage.username ===
+                                 {localStorage.username ===
                                     this.props.match.params.username && (
                                     <div>
                                        <button
