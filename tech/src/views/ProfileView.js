@@ -1,17 +1,20 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import styled from 'styled-components';
-import {getUsers}  from '../actions';
+import {getUsers, getItems, deleteItem, postItem}  from '../actions';
+import {Link} from 'react-router-dom';
+import AddItemForm from '../components/AddItemForm';
 
 const StyledProfileContainer = styled.div`{
     border: solid slategray 2px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     padding-left: 2%;
-    justify-content: space-around;
+    // justify-content: space-around;
     width: 80%;
     margin-left: 6%;
-    height: 800px;
+    height: 1300px;
+    margin-bottom: 5%;
         img {
             border-radius: 50%;
             height: 300px;
@@ -31,36 +34,113 @@ const StyledUserDetails = styled.div`{
 }`;
 
 const StyledTopDiv = styled.div`{
-    border-bottom: dashed slategray 1px;
+    // border-bottom: solid slategray 1px;
     display: flex;
     width: 100%;
     justify-content: space-around;
-    margin-right: 3%;
+    margin-right: 5%;
     height: 400px;
+}`;
+
+const StyledUserItemsContainer = styled.div`{
+    display: flex;
+    flex-direction: row;
+    border: solid slategray 1px;
+    margin-right: 2.5%;
+    justify-content: space-between;
+    min-height: 350px;
+    min-width: 90%;
+    overflow-x: auto;
+}`;
+
+const StyledUserItem = styled.div`{
+    min-width: 25%;
+    min-height: 240px;
+    border: dashed slategray 1px
+    margin-top: 1%;
+    margin-left: 15px;
+    margin-bottom: 1%;
+    text-align: center;    
 }`;
 class ProfileView extends React.Component {
 
     // display user items, requests, and reviews
     // if profile belongs to user, have edit profile option
 
-    componentDidMount() {
-        this.props.getUsers();
+    state = {
+        newItem: {
+            available: true,
+            dailyPrice: null,
+            weeklyPrice: null,
+            description: '',
+            label: '',
+            model: '',
+            title: '',
+            renter: 1,
+            owner: 1
+        },
+        addingItem: false
     };
 
+    componentDidMount() {
+        this.props.getUsers();
+        this.props.getItems();
+    };
+
+
+    submitHandler = e => {
+        e.preventDefault();
+        this.props.postItem(this.state.newItem);
+    };
+
+    changeHandler = e => {
+        this.setState({
+            newItem: {...this.state.newItem, [e.target.name]: e.target.value}
+        });
+    };
+    
     render() {
         const data = this.props.location.state.user[0];
         return (
-            <StyledProfileContainer>
-                <StyledTopDiv>
-                    <img src={data.image} alt='avatar' />
-                    <StyledUserDetails>
-                        <h2>{data.username}</h2>
-                        <p>name: {data.firstName} {data.lastName}</p>
-                        <p>email: {data.email}</p>
-                        <p>phone number: {data.phone}</p>
-                    </StyledUserDetails>
-                </StyledTopDiv>
-            </StyledProfileContainer>
+            <div>
+                <StyledProfileContainer>
+                    <StyledTopDiv>
+                        <img src={data.image} alt='avatar' />
+                        <StyledUserDetails>
+                            <h2>{data.username}</h2>
+                            <p>name: {data.firstname} {data.lastname}</p>
+                            <p>email: {data.email}</p>
+                            <p>phone number: {data.phone}</p>
+                        </StyledUserDetails>
+                    </StyledTopDiv>
+                    <StyledUserItemsContainer>
+                        <AddItemForm submitHandler={this.submitHandler} changeHandler={this.changeHandler}/>
+                        {this.props.items.map(item => {
+                            if (item.owner === data.userId) {return (
+                                <StyledUserItem>
+                                    <h3> {item.title} </h3>
+                                    <img src={item.image} alt='item'/>
+                                    <p> {item.brand} {item.model} {item.label} </p>
+                                    <p> daily price: ${item.dailyPrice} <br/> Weekly price: ${item.weeklyPrice} </p>
+                                    {sessionStorage.username === this.props.match.params.username && 
+                                    <div>
+                                        <button onClick={() => this.props.deleteItem(item.itemId)} >Garbage</button>
+                                        <Link to={{
+                                            pathname: `/item/${item.itemId}/edit`,
+                                            state: {
+                                                itemClicked: item,
+                                                updatingItem: true
+                                            }
+                                            }}><button>Update Item</button>
+                                        </Link>
+                                    </div>}
+                                </StyledUserItem>
+                            );}
+                        })}
+                    </StyledUserItemsContainer>
+                </StyledProfileContainer>
+
+            </div>
         );
     };
 };
@@ -72,4 +152,4 @@ function mapStateToProps(state) {
     };
 };
 
-export default connect(mapStateToProps, {getUsers})(ProfileView);
+export default connect(mapStateToProps, {getUsers, getItems, deleteItem, postItem})(ProfileView);

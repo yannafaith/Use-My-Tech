@@ -56,6 +56,86 @@ class ItemView extends React.Component {
 
       return (
           <StyledItemContainer>
+              {this.props.location.state.updatingItem ?
+                <form>
+                    <img style={{width: '275px', height: '275px'}}src={data.image} />
+                    <p>Change Image? <input type='file'/> </p>
+                    <p>Title: {
+                    <input 
+                    placeholder={data.title} 
+                    name='title' 
+                    onChange={this.handleChanges}/>}
+                    </p>
+                    <p>Brand: {
+                    <input 
+                    placeholder={data.brand} 
+                    name='brand' 
+                    onChange={this.handleChanges}/>}
+                    </p>
+                    <p>Model: {
+                    <input 
+                    placeholder={data.model} 
+                    name='model' 
+                    onChange={this.handleChanges}/>}
+                    </p>
+                    <p>Description: <br/> {
+                    <input style={{height:'200px', width: '300px'}} id='description'
+                    placeholder={data.description} 
+                    name='description' 
+                    onChange={this.handleChanges}/>}
+                    </p>
+                    <p>Daily Price: {
+                    <input 
+                    placeholder={data.dailyPrice} 
+                    name='dailyPrice' 
+                    onChange={this.handleChanges}/>}
+                    </p>
+                    <p>Weekly Price: {
+                    <input 
+                    placeholder={data.weeklyPrice} 
+                    name='weeklyPrice' 
+                    onChange={this.handleChanges}/>}
+                    </p>
+                </form> 
+                :
+                <StyledTopDiv>
+                <img src={data.image} />
+                    <StyledItemDetails>
+                        <h3>{data.title}</h3>
+                        <p> Brand: {data.brand}</p>
+                        <p> Model: {data.model}</p>
+                        <p> Description: {data.description} </p>
+                        <p> Daily Price: {data.dailyPrice}</p>
+                        <p> Weekly Price: {data.weeklyPrice}</p>
+                        <Link to={{
+                            pathname: `/profile/${clickedUser[0].username}`,
+                            state: {
+                                user: clickedUser
+                                }
+                            }}>
+                            <p>Renter Profile Link: {clickedUser[0].username}</p>
+                        </Link>
+                    </StyledItemDetails>
+                </StyledTopDiv>
+              }
+          </StyledItemContainer>
+      );  
+    };
+};
+
+function mapStateToProps(state) {
+    return {
+        items: state.items,
+        users: state.users
+    };
+};
+
+export default connect(mapStateToProps, {getUsers, getItems})(ItemView);
+
+/* 
+
+      return (
+          <StyledItemContainer>
             <StyledTopDiv>
               <img src={data.image} />
                 <StyledItemDetails>
@@ -74,18 +154,22 @@ class ItemView extends React.Component {
                         <p>Renter Profile Link: {clickedUser[0].username}</p>
                     </Link>
                 </StyledItemDetails>
-              </StyledTopDiv>
+            </StyledTopDiv>
+              {this.props.location.state.updatingItem && 
+                <form>
+                    <h3>Title: {
+                    <input 
+                    placeholder={data.title} 
+                    name='title' 
+                    onChange={this.handleChanges}/>}
+                    </h3>
+                </form>
+              }
+
           </StyledItemContainer>
       );  
-    };
-};
 
-function mapStateToProps(state) {
-    return {
-        items: state.items,
-        users: state.users
-    };
-};
 
-export default connect(mapStateToProps, {getUsers, getItems})(ItemView);
 
+
+*/

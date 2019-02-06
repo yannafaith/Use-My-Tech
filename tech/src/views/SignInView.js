@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import ItemListView from './ItemListView';
 import styled from 'styled-components';
 import { getUsers } from '../actions';
 
@@ -40,12 +39,12 @@ class SignInView extends React.Component {
         newUser: {},
         validUser: false,
         username: '',
-        password: ''
+        password: '',
     };
 
     componentDidMount() {
         this.props.getUsers()
-    }
+    };
 
     changeHandler = e => {
         this.setState({
@@ -57,6 +56,8 @@ class SignInView extends React.Component {
         !(this.state.username === '' || this.state.password === '') ?
         this.setState({validUser: true}) : alert('must enter username and password');
         e.preventDefault();
+        sessionStorage.setItem('username', this.state.username);
+        console.log(sessionStorage)
     };
 
     render() {
@@ -71,9 +72,15 @@ class SignInView extends React.Component {
                     this.state.validUser === true ? 
                     <StyledContainer>
                         <p>Welcome {this.state.username}! Where to next?</p>
-                        <Link to='/items' Component={ItemListView}>
+                        <Link to={{
+                            pathname: '/items', 
+                            state: {
+                                user: loggedInUser
+                            } 
+                        }}>
                             <button> Go to Vault </button>
                         </Link> 
+
                         <Link to={{ 
                             pathname: `/profile/${this.state.username}`,
                             state: {
@@ -142,23 +149,3 @@ function mapStateToProps(state){
   };
   
 export default connect(mapStateToProps, {getUsers})(SignInView);
-
-/* 
-
-                <div className='SignUpForm'> 
-                    <form /* onSubmit={submitHandler} >
-                    <input placeholder = 'username' />
-                    <input placeholder = 'password' />
-                    <input placeholder = 'email' />
-                    <input placeholder = 'phone number' />
-                    <input placeholder = 'location' />
-                    <input placeholder = 'picture' />
-                    <input placeholder = 'first name' />
-                    <input placeholder = 'last name' />
-                    <Link to='/Profile' Component={ProfileView}>
-                        <button type='submit'> Sign Up </button>
-                    </Link>
-                </form>
-            </div>
-
-*/
