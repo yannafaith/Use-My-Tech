@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { getUsers, login } from '../actions';
+import { getUsers, login, registerUser } from '../actions';
 
 const StyledContainer = styled.div`
     {
@@ -43,25 +43,48 @@ class SignInView extends React.Component {
       validUser: null,
       username: '',
       password: '',
+      newUser: {
+
+      }
    };
 
    componentDidMount() {
       this.props.getUsers();
    }
 
-   changeHandler = e => {
+   changeHandlerLogin = e => {
       this.setState({
          [e.target.name]: e.target.value,
       });
    };
 
-   submitHandler = e => {
+   changeHandlerSignUp = e => {
+      this.setState({
+         newUser: {
+             ...this.state.newUser, [e.target.name] : e.target.value
+         }
+      });
+      console.log(this.state.newUser);
+   };
+
+
+   submitHandlerLogin = e => {
       e.preventDefault();
       localStorage.setItem('username', this.state.username);
       this.props.login(this.state);
 
       this.setState({ username: '', password: ''});
    };
+
+   submitHandlerSignUp = e => {
+      e.preventDefault();
+      localStorage.setItem('username', this.state.username);
+      this.props.registerUser(this.state.newUser);
+  
+
+      this.setState({ newUser: null});
+   };
+
 
    render() {
       const loggedInUser = this.props.users.filter(
@@ -98,51 +121,51 @@ class SignInView extends React.Component {
             ) : (
                <StyledContainer>
                   <StyledForm>
-                     <form onSubmit={this.submitHandler}>
+                     <form onSubmit={this.submitHandlerLogin}>
                         <input
                            placeholder="username"
                            name="username"
-                           onChange={this.changeHandler}
+                           onChange={this.changeHandlerLogin}
                         />
                         <input
                            placeholder="password"
                            name="password"
-                           onChange={this.changeHandler}
+                           onChange={this.changeHandlerLogin}
                         />
                         <button type="submit">Sign In!</button>
                      </form>
                   </StyledForm>
                   <StyledForm>
-                     <form onSubmit={this.submitHandler}>
+                     <form onSubmit={this.submitHandlerSignUp}>
                         <input
                            placeholder="username"
                            name="username"
-                           onChange={this.changeHandler}
+                           onChange={this.changeHandlerSignUp}
                         />
                         <input
                            placeholder="password"
                            name="password"
-                           onChange={this.changeHandler}
+                           onChange={this.changeHandlerSignUp}
                         />
                         <input
                            placeholder="email"
                            name="email"
-                           onChange={this.changeHandler}
+                           onChange={this.changeHandlerSignUp}
                         />
                         <input
                            placeholder="phone"
                            name="phone"
-                           onChange={this.changeHandler}
+                           onChange={this.changeHandlerSignUp}
                         />
                         <input
                            placeholder="first name"
-                           name="firstName"
-                           onChange={this.changeHandler}
+                           name="firstname"
+                           onChange={this.changeHandlerSignUp}
                         />
                         <input
                            placeholder="last name"
-                           name="lastName"
-                           onChange={this.changeHandler}
+                           name="lastname"
+                           onChange={this.changeHandlerSignUp}
                         />
                         <button type="submit">Sign Up!</button>
                      </form>
@@ -162,5 +185,5 @@ function mapStateToProps(state) {
 
 export default connect(
    mapStateToProps,
-   { getUsers, login }
+   { getUsers, login, registerUser }
 )(SignInView);

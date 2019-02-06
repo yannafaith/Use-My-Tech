@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
-import { getUsers, getItems } from '../actions';
+import { getUsers, getItems, putItem } from '../actions';
 
 const StyledItemContainer = styled.div`{
     border: solid slategray 2px;
@@ -41,9 +41,31 @@ const StyledTopDiv = styled.div`{
 
 
 class ItemView extends React.Component {
+    state = {
+        updatedItem: {
+         }
+    }
 
+    handleChanges = (e) => {
+        this.setState({
+            updatedItem: {
+                ...this.state.updatedItem, [e.target.name] : e.target.value
+            }
+        });
+        console.log(this.state.updatedItem);
+    };
 
-    // item booking takes place here
+    submit = e => {
+        e.preventDefault();
+        this.props.putItem(5, this.state.updatedItem);
+    };
+
+    rentItem = () => {
+        this.props.putItem(5, {"renter": 5}) // change using localStorage
+        // alert('item rental request sent!');
+
+    }
+
 
 
     render() {
@@ -57,7 +79,7 @@ class ItemView extends React.Component {
       return (
           <StyledItemContainer>
               {this.props.location.state.updatingItem ?
-                <form>
+                <form onSubmit={this.submit}>
                     <img style={{width: '275px', height: '275px'}}src={data.image} />
                     <p>Change Image? <input type='file'/> </p>
                     <p>Title: {
@@ -96,6 +118,7 @@ class ItemView extends React.Component {
                     name='weeklyPrice' 
                     onChange={this.handleChanges}/>}
                     </p>
+                    <button type='submit'>Edit Item</button>
                 </form> 
                 :
                 <StyledTopDiv>
@@ -115,6 +138,7 @@ class ItemView extends React.Component {
                             }}>
                             <p>Renter Profile Link: {clickedUser[0].username}</p>
                         </Link>
+                        <button onClick={() => this.rentItem()}>Rent Request</button>
                     </StyledItemDetails>
                 </StyledTopDiv>
               }
@@ -130,7 +154,7 @@ function mapStateToProps(state) {
     };
 };
 
-export default connect(mapStateToProps, {getUsers, getItems})(ItemView);
+export default connect(mapStateToProps, {getUsers, getItems, putItem})(ItemView);
 
 /* 
 

@@ -65,6 +65,8 @@ class ProfileView extends React.Component {
    // display user items, requests, and reviews
    // if profile belongs to user, have edit profile option
 
+   // need to 
+
    state = {
       newItem: {
          available: true,
@@ -75,7 +77,7 @@ class ProfileView extends React.Component {
          model: '',
          title: '',
          renter: 1,
-         owner: 5,
+         owner: 5, // need to make this dynamic
       },
       addingItem: false,
    };
@@ -129,11 +131,19 @@ class ProfileView extends React.Component {
                         <p>phone number: {user.phone}</p>
                      </StyledUserDetails>
                   </StyledTopDiv>
+                    { /* localStorage.username === this.props.match.params.username &&                      
+                        <AddItemForm
+                            submitHandler={this.submitHandler}
+                            changeHandler={this.changeHandler}
+                        />
+                    */}
                   <StyledUserItemsContainer>
-                     <AddItemForm
-                        submitHandler={this.submitHandler}
-                        changeHandler={this.changeHandler}
-                     />
+                    {localStorage.username === this.props.match.params.username &&                      
+                        <AddItemForm
+                            submitHandler={this.submitHandler}
+                            changeHandler={this.changeHandler}
+                        />
+                    }
                      {this.props.items.map(item => {
                         if (item.owner === user.userId) {
                            return (

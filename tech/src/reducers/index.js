@@ -13,6 +13,7 @@ import {
     DELETE_ITEM_SUCCESS,
     LOGIN,
     LOGOUT,
+    REGISTER_USER_SUCCESS
  } from '../actions';
  
  // this controls store state
@@ -102,6 +103,11 @@ import {
              items: [],
              token: null,
           };
+       case REGISTER_USER_SUCCESS:
+         return {
+            ...state
+         }
+
        default:
           return state;
     }
