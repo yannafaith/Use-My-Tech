@@ -30,7 +30,7 @@ const reducer = (state = initialState, action) => {
         //  ===================================
         case POST_ITEM_SUCCESS:
             return {
-                ...state, items: [...state.items, action.payload.creds]
+                ...state, items: [...state.items, action.payload]
             };
         case POST_ITEM_FAILURE: 
             return {
