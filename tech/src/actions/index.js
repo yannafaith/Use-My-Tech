@@ -25,6 +25,8 @@ export const DELETE_USER_SUCCESS = 'DELETE_ITEM_SUCCESS';
 export const DELETE_USER_FAILURE = 'DELETE_ITEM_FAILURE';
 */
 
+// need to add a getItems call in delete 
+
 
 export const getUsers = () => dispatch => {
     axios
