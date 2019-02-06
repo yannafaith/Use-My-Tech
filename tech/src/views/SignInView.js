@@ -7,17 +7,19 @@ import { getUsers, login, registerUser } from '../actions';
 const StyledContainer = styled.div`
     {
       border: solid slategray 1px;
-      height: 325px;
-      width: 90%;
-      margin-left: 5%;
+      height: 300px;
+      width: 50%;
+      margin-left: 24%;
       display: flex;
       flex-direction: column;
       align-items: center;
+      background-color: slategray //#0c1425;
    }
 `;
 
 const StyledForm = styled.div`
     {
+      background-color: slategray;
       form {
          display: flex;
          flex-direction: column;
@@ -25,8 +27,10 @@ const StyledForm = styled.div`
          width: 500px;
          justify-content: center;
          margin-top: 5%;
+         background-color: slategray; 
          input {
             height: 20px;
+           // background-color:  #f4f7fb;
          }
          button {
             width: 100px;
@@ -104,7 +108,7 @@ class SignInView extends React.Component {
                         },
                      }}
                   >
-                     <button> Go to Vault </button>
+                     <button> Plum Market </button>
                   </Link>
 
                   <Link
@@ -115,7 +119,7 @@ class SignInView extends React.Component {
                         },
                      }}
                   >
-                     <button> Go to Profile </button>
+                     <button> My Profile </button>
                   </Link>
                </StyledContainer>
             ) : (

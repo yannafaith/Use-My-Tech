@@ -13,8 +13,9 @@ const StyledProfileContainer = styled.div`
    justify-content: space-around;
    width: 80%;
    margin-left: 6%;
-   height: 1300px;
+   height: 800px;
    margin-bottom: 5%;
+   background-color: #0c1425;
    img {
       border-radius: 50%;
       height: 300px;
@@ -24,6 +25,7 @@ const StyledProfileContainer = styled.div`
 
 const StyledUserDetails = styled.div`
    // border: solid purple 2px;
+   background-color: white;
    width: 300px;
    height: 200px;
    margin-top: 10%;
@@ -32,33 +34,37 @@ const StyledUserDetails = styled.div`
 `;
 
 const StyledTopDiv = styled.div`
-   // border-bottom: solid slategray 1px;
+   // border: solid green 1px;
    display: flex;
-   width: 100%;
+   width: 97%;
    justify-content: space-around;
    margin-right: 5%;
    height: 400px;
+   background-color:  #f4f7fb;
 `;
 
 const StyledUserItemsContainer = styled.div`
    display: flex;
    flex-direction: row;
-   border: solid slategray 1px;
+   // border: solid blue 1px;
    margin-right: 2.5%;
-   justify-content: space-between;
+   justify-content: space-around;
    min-height: 350px;
    min-width: 90%;
    overflow-x: auto;
+   background-color:  #f4f7fb;
 `;
 
 const StyledUserItem = styled.div`
    min-width: 25%;
+   max-width: 50%;
    min-height: 240px;
-   border: dashed slategray 1px;
+   // border: dashed #0c1425 1px;
    margin-top: 1%;
    margin-left: 15px;
    margin-bottom: 1%;
    text-align: center;
+   background-color: white;
 `;
 
 class ProfileView extends React.Component {
@@ -77,7 +83,8 @@ class ProfileView extends React.Component {
          model: '',
          title: '',
          renter: 1,
-         owner: localStorage.userId
+         owner: localStorage.userId,
+         //image: null
       },
       addingItem: false,
    };
@@ -131,18 +138,15 @@ class ProfileView extends React.Component {
                         <p>phone number: {user.phone}</p>
                      </StyledUserDetails>
                   </StyledTopDiv>
-                    { /* localStorage.username === this.props.match.params.username &&                      
-                        <AddItemForm
-                            submitHandler={this.submitHandler}
-                            changeHandler={this.changeHandler}
-                        />
-                    */}
+
                   <StyledUserItemsContainer>
                     {localStorage.username === this.props.match.params.username &&                      
+                        <StyledUserItem>
                         <AddItemForm
                             submitHandler={this.submitHandler}
                             changeHandler={this.changeHandler}
                         />
+                        </StyledUserItem>
                     }
                      {this.props.items.map(item => {
                         if (item.owner === user.userId) {

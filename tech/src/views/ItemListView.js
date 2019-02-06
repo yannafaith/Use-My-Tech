@@ -2,10 +2,13 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
-import { getItems, getUsers, postItem } from '../actions';
+import { getItems, getUsers } from '../actions';
+
+// background-color:  #f4f7fb;
+ // background-color: #0c1425;
 
 const StyledContainer = styled.div`{
-    // border: solid slategray 2px;
+    border: solid slategray 2px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -13,16 +16,19 @@ const StyledContainer = styled.div`{
     margin-top: 3%;
     justify-content: space-around;
     margin-bottom: 2%;
+    background-color: #0c1425;
 }`;
 
 const StyledLinksToItems = styled.div`{
     width: 350px;
-    border: solid slategray 1px;
+    // border: solid slategray 1px;
     height: 400px;
-    margin-bottom: 2%;
+    margin-bottom: 5%;
     display: flex;
     flex-direction: column;
-    text-align: center
+    text-align: center;
+    margin-top: 5%;
+    background-color: white;
         :hover {
             background-color: slategray;
             color: black;
@@ -81,19 +87,3 @@ function mapStateToProps(state){
 export default connect(
     mapStateToProps, {getItems, getUsers}
     )(ItemListView);
-
-/*
-<div>
-    <p>Search bar</p>
-    <button>Add Item <br/> + </button>
-</div>
-
-<Link to={{
-    pathname: '/add-item',
-    state: {
-        currentUser: ''
-    }}}> <button> Add New Item</button> 
-</Link> 
-
-{(this.state.addingItem && <AddItemForm submitHandler={this.submitHandler} changeHandler={this.changeHandler}/>)}
-*/

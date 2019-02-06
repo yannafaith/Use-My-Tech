@@ -121,9 +121,11 @@ class ItemView extends React.Component {
                     </p>
                     <button type='submit'>Edit Item</button>
                 </form> 
+                
                 :
+
                 <StyledTopDiv>
-                <img src={data.image} />
+                    <img alt='item' src={data.image} />
                     <StyledItemDetails>
                         <h3>{data.title}</h3>
                         <p> Brand: {data.brand}</p>

@@ -76,8 +76,14 @@ export const getItems = () => dispatch => {
 };
 
 export const postItem = item => dispatch => {
+   const token = localStorage.getItem("jwt");
+   const options = {
+     headers: {
+       authorization: token
+     }
+   };
    axios
-      .post('https://use-my-tech-stuff.herokuapp.com/api/items', { ...item })
+      .post('https://use-my-tech-stuff.herokuapp.com/api/items', { ...item }, options)
       .then(res => {
          console.log('postItem', res.data);
          dispatch({ type: POST_ITEM_SUCCESS, payload: res.data });
@@ -86,8 +92,14 @@ export const postItem = item => dispatch => {
 };
 
 export const deleteItem = (itemId) => dispatch => {
+   const token = localStorage.getItem("jwt");
+   const options = {
+     headers: {
+       authorization: token
+     }
+   };
    axios
-       .delete(`https://use-my-tech-stuff.herokuapp.com/api/items/${itemId}`)
+       .delete(`https://use-my-tech-stuff.herokuapp.com/api/items/${itemId}`, options)
        .then(res => {
            dispatch({type: DELETE_ITEM_SUCCESS, payload: res.data});
            dispatch(getItems())
@@ -95,8 +107,14 @@ export const deleteItem = (itemId) => dispatch => {
        .catch(err => dispatch({type: DELETE_ITEM_FAILURE, payload: err}));
 };
 export const putItem = (itemId, updatedItem) => dispatch => {
+   const token = localStorage.getItem("jwt");
+   const options = {
+     headers: {
+       authorization: token
+     }
+   };
    axios
-      .patch(`https://use-my-tech-stuff.herokuapp.com/api/items/${itemId}`, updatedItem)
+      .patch(`https://use-my-tech-stuff.herokuapp.com/api/items/${itemId}`, updatedItem, options)
       .then(res => {
          dispatch(getItems())
          dispatch({ type: PUT_ITEM_SUCCESS, payload: res.data })})

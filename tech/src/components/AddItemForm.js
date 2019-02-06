@@ -34,6 +34,7 @@ const AddItemForm = (props) => {
                     placeholder = 'title'
                     name = 'title'
                     onChange = {props.changeHandler} />
+                    <p> <input type='file' /> </p>
                 <button type='submit'>Add Item</button>
             </form>
         </div>
