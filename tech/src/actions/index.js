@@ -42,7 +42,6 @@ export const login = creds => dispatch => {
 };
 
 export const logout = () => dispatch => {
-   localStorage.removeItem('jwt');
    dispatch({ type: LOGOUT });
 };
 

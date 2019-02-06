@@ -40,7 +40,7 @@ const StyledForm = styled.div`
 class SignInView extends React.Component {
    state = {
       //   newUser: {},
-      //   validUser: false,
+      validUser: null,
       username: '',
       password: '',
    };
@@ -60,19 +60,19 @@ class SignInView extends React.Component {
       localStorage.setItem('username', this.state.username);
       this.props.login(this.state);
 
-      this.setState({ username: '', password: '' });
+      this.setState({ username: '', password: ''});
    };
 
    render() {
       const loggedInUser = this.props.users.filter(
-         user => user.username === this.state.username
+         user => user.username === localStorage.username
       );
 
       return (
          <div>
-            {this.state.validUser === true ? (
+            {localStorage.username ? (
                <StyledContainer>
-                  <p>Welcome {this.state.username}! Where to next?</p>
+                  <p>Welcome {localStorage.username}! Where to next?</p>
                   <Link
                      to={{
                         pathname: '/items',
@@ -86,7 +86,7 @@ class SignInView extends React.Component {
 
                   <Link
                      to={{
-                        path: `/profile/${localStorage.getItem('username')}`,
+                        pathname: `/profile/${localStorage.username}`,
                         state: {
                            user: loggedInUser,
                         },
