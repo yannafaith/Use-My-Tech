@@ -77,7 +77,7 @@ class ProfileView extends React.Component {
          model: '',
          title: '',
          renter: 1,
-         owner: 5, // need to make this dynamic
+         owner: localStorage.userId
       },
       addingItem: false,
    };

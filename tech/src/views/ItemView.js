@@ -55,16 +55,17 @@ class ItemView extends React.Component {
         console.log(this.state.updatedItem);
     };
 
-    submit = e => {
+    submit = (e, itemId = this.props.location.pathname.split('/')[2]) => {
         e.preventDefault();
-        this.props.putItem(5, this.state.updatedItem);
+        this.props.putItem(itemId, this.state.updatedItem);
+        this.props.history.push(`/profile/${localStorage.username}`);
+        // this.props.getItems();
     };
 
-    rentItem = () => {
-        this.props.putItem(5, {"renter": 5}) // change using localStorage
-        // alert('item rental request sent!');
-
-    }
+    rentItem = (itemId = this.props.location.pathname.split('/')[2]) => {
+        this.props.putItem(itemId, {"renter": localStorage.userId}) // change using localStorage
+        alert('item rental request sent!');
+    };
 
 
 

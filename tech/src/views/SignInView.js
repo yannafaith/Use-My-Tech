@@ -64,7 +64,6 @@ class SignInView extends React.Component {
              ...this.state.newUser, [e.target.name] : e.target.value
          }
       });
-      console.log(this.state.newUser);
    };
 
 
@@ -78,7 +77,7 @@ class SignInView extends React.Component {
 
    submitHandlerSignUp = e => {
       e.preventDefault();
-      localStorage.setItem('username', this.state.username);
+      // localStorage.setItem('username', this.state.username);
       this.props.registerUser(this.state.newUser);
   
 
@@ -90,6 +89,7 @@ class SignInView extends React.Component {
       const loggedInUser = this.props.users.filter(
          user => user.username === localStorage.username
       );
+
 
       return (
          <div>

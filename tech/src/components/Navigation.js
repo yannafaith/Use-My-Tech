@@ -12,7 +12,7 @@ class Navigation extends React.Component  {
         <div>
            <Link to="/items">
               {' '}
-              <h1> Tech Vault </h1>{' '}
+              <h1> Tech Plum </h1>{' '}
            </Link>
            {user && ( <div>
               <Link

@@ -34,8 +34,9 @@ export const login = creds => dispatch => {
    axios
       .post('https://use-my-tech-stuff.herokuapp.com/api/auth/login', creds)
       .then(res => {
-         console.log('res.data', res.data);
+         console.log('res.data LOGIN', res.data);
          localStorage.setItem('jwt', res.data.token);
+         localStorage.setItem('userId', res.data.userId)
          const token = localStorage.getItem('jwt');
 
          dispatch({ type: LOGIN, payload: token });
@@ -84,18 +85,6 @@ export const postItem = item => dispatch => {
       .catch(err => dispatch({ type: POST_ITEM_FAILURE, payload: err }));
 };
 
-/*
-export const postUser = user => dispatch => {
-   axios
-      .post('https://use-my-tech-stuff.herokuapp.com/api/users', { ...user })
-      .then(res => {
-         dispatch({ type: POST_ITEM_SUCCESS, payload: res.data })
-         dispatch({type: LOGIN})
-         dispatch(getUsers())
-      })
-      .catch(err => dispatch({ type: POST_ITEM_FAILURE, payload: err }));
-}; */
-
 export const deleteItem = (itemId) => dispatch => {
    axios
        .delete(`https://use-my-tech-stuff.herokuapp.com/api/items/${itemId}`)
@@ -107,8 +96,10 @@ export const deleteItem = (itemId) => dispatch => {
 };
 export const putItem = (itemId, updatedItem) => dispatch => {
    axios
-      .put(`https://use-my-tech-stuff.herokuapp.com/api/items/${itemId}`, updatedItem)
-      .then(res => dispatch({ type: PUT_ITEM_SUCCESS, payload: res.data }))
+      .patch(`https://use-my-tech-stuff.herokuapp.com/api/items/${itemId}`, updatedItem)
+      .then(res => {
+         dispatch(getItems())
+         dispatch({ type: PUT_ITEM_SUCCESS, payload: res.data })})
       .catch(err => dispatch({ type: PUT_ITEM_FAILURE, payload: err }));
 };
 
