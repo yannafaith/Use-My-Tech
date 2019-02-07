@@ -8,7 +8,7 @@ import { getItems, getUsers } from '../actions';
  // background-color: #0c1425;
 
 const StyledContainer = styled.div`{
-    border: solid slategray 2px;
+    //border: solid slategray 2px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -16,12 +16,13 @@ const StyledContainer = styled.div`{
     margin-top: 3%;
     justify-content: space-around;
     margin-bottom: 2%;
-    background-color: #0c1425;
+    background-color: #f4f7fb;;
 }`;
 
 const StyledLinksToItems = styled.div`{
     width: 350px;
-    // border: solid slategray 1px;
+    // border: solid slategray .5px;
+    border-radius: 5px;
     height: 400px;
     margin-bottom: 5%;
     display: flex;
@@ -40,6 +41,12 @@ const StyledLinksToItems = styled.div`{
     };
 }`;
 
+const CenterHeader = styled.h4`{
+    justify-self: center;
+    // border: solid green 2px;
+    text-align: center;
+}`
+
 class ItemListView extends React.Component {
 
     componentDidMount() {
@@ -50,7 +57,10 @@ class ItemListView extends React.Component {
     render() {
 
         return (
-            <div>              
+            <div>  
+                <CenterHeader>
+                    <h2>Listings</h2> 
+                </CenterHeader>           
                 <StyledContainer>
                     {this.props.items.map(item => {
                         if (item.owner !== parseInt(localStorage.userId) && item.renter == null)

@@ -2,6 +2,15 @@ import { Link } from 'react-router-dom';
 import React from 'react';
 import { connect } from 'react-redux';
 import { getUsers, logout } from '../actions';
+import styled from 'styled-components';
+
+const StyledNav = styled.div`{
+   border: solid red 2px;
+   display: flex;
+   width: 99%;
+   justify-content: space-between;
+   margin-left: .3%;
+}`;
 
 class Navigation extends React.Component  {
 
@@ -9,7 +18,7 @@ class Navigation extends React.Component  {
    render () {
     const user = localStorage.username;
     return (
-        <div>
+        <StyledNav>
            <Link to="/items">
               {' '}
               <h1> Tech Plum </h1>{' '}
@@ -40,7 +49,7 @@ class Navigation extends React.Component  {
               </Link>
               </div>
            )}
-        </div>
+        </StyledNav>
      );
     };
 };
