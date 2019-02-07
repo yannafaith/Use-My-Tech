@@ -38,6 +38,7 @@ export const login = creds => dispatch => {
 
 export const logout = () => dispatch => {
    dispatch({ type: LOGOUT });
+   localStorage.clear();
 };
 
 export const registerUser = user => dispatch => {

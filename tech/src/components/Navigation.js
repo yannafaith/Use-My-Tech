@@ -5,11 +5,28 @@ import { getUsers, logout } from '../actions';
 import styled from 'styled-components';
 
 const StyledNav = styled.div`{
-   border: solid red 2px;
+   // border: solid red 2px;
    display: flex;
    width: 99%;
    justify-content: space-between;
-   margin-left: .3%;
+   box-shadow: 0px 0px 27px -7px rgba(0, 0, 0, 0.5);
+   position: fixed;
+   z-index: 1;
+   width: 100%;
+   background: #ffffff;
+   top: 0;
+   line-height: 30px;
+   font-family: 'Roboto';
+   padding-left: 3%;
+   .links {
+      // border: solid red 2px;
+      margin-right: 5%;
+      align-items: center;
+      width: 500px;
+      display: flex;
+      justify-content: space-around;
+   }
+   align-items: center;
 }`;
 
 class Navigation extends React.Component  {
@@ -23,8 +40,11 @@ class Navigation extends React.Component  {
               {' '}
               <h1> Tech Plum </h1>{' '}
            </Link>
-           {user && ( <div>
-              <Link
+           <div className='links'>
+           <Link to='/items'>Rent a Device</Link>
+           <Link to='/items'>List a Device</Link>
+           <Link to='/items'>Plum Market</Link>
+           <Link
                  to={{
                     pathname: `/profile/${user}`,
                     state: {
@@ -35,20 +55,16 @@ class Navigation extends React.Component  {
                  }}
               >
                  {' '}
-                 My Profile
-              </Link>
-  
-              {/* ============= */}
-              <Link onClick={() => this.props.logout()}
+                  Profile
+            </Link>
+            <Link onClick={() => this.props.logout()}
                  to={{
                     pathname: `/`
                  }}
-              >
+              > Logout
                  {' '}
-                 <button onClick={() => localStorage.clear()}>Logout</button>
-              </Link>
-              </div>
-           )}
+            </Link>
+         </div>
         </StyledNav>
      );
     };
@@ -102,5 +118,30 @@ const Navigation = props => {
       </div>
    );
 };
+
+           {user && ( <div className='links'>
+              <Link
+                 to={{
+                    pathname: `/profile/${user}`,
+                    state: {
+                       user: this.props.users.map(user => {
+                          if (user.username === user) return user;
+                       }),
+                    },
+                 }}
+              >
+                 {' '}
+                  Profile
+              </Link>
+
+              <Link onClick={() => this.props.logout()}
+                 to={{
+                    pathname: `/`
+                 }}
+              > Logout
+                 {' '}
+              </Link>
+              </div>
+           )}
 
 */

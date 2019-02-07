@@ -13,21 +13,23 @@ const StyledContainer = styled.div`
       display: flex;
       flex-direction: column;
       align-items: center;
-      background-color: slategray;
+      background-color: #f4f7fb;
+      margin-top: 10%;
+      margin-bottom: 5%;
    }
 `;
 
 const StyledForm = styled.div`
     {
-      background-color: slategray;
+      background-color: #f4f7fb;
       form {
          display: flex;
          flex-direction: column;
-         border: solid slategray 1px;
+         // border: solid slategray 1px;
          width: 500px;
          justify-content: center;
          margin-top: 5%;
-         background-color: slategray; 
+         background-color: #f4f7fb; 
          input {
             height: 20px;
            background-color: white;

@@ -14,9 +14,13 @@ const StyledContainer = styled.div`{
     flex-wrap: wrap;
     margin: 5%;
     margin-top: 3%;
+    max-height: 600px;
+    overflow: scroll;
     justify-content: space-around;
     margin-bottom: 2%;
-    background-color: #f4f7fb;;
+    background-color: #f4f7fb;
+    // margin-top: 0%;
+
 }`;
 
 const StyledLinksToItems = styled.div`{
@@ -28,7 +32,7 @@ const StyledLinksToItems = styled.div`{
     display: flex;
     flex-direction: column;
     text-align: center;
-    margin-top: 5%;
+    margin-top: 2%;
     background-color: white;
         :hover {
             background-color: slategray;
@@ -39,13 +43,17 @@ const StyledLinksToItems = styled.div`{
         height: 235px;
         align-self: center;
     };
+    box-shadow: 0px 0px 27px -7px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
 }`;
 
 const CenterHeader = styled.h4`{
     justify-self: center;
     // border: solid green 2px;
     text-align: center;
+    margin-top: 8%;
 }`
+
 
 class ItemListView extends React.Component {
 
@@ -57,10 +65,10 @@ class ItemListView extends React.Component {
     render() {
 
         return (
-            <div>  
+            <div>        
                 <CenterHeader>
                     <h2>Listings</h2> 
-                </CenterHeader>           
+                </CenterHeader>   
                 <StyledContainer>
                     {this.props.items.map(item => {
                         if (item.owner !== parseInt(localStorage.userId) && item.renter == null)
@@ -80,7 +88,6 @@ class ItemListView extends React.Component {
                         )}
                     })}
                 </StyledContainer>
-
             </div>
         );
     };
@@ -98,3 +105,17 @@ function mapStateToProps(state){
 export default connect(
     mapStateToProps, {getItems, getUsers}
     )(ItemListView);
+
+/*
+                <StyledFooter>
+                        <p>@2019 Tech Plum</p>
+                        <p>Privacy Policy</p>
+                        <p>Terms and Conditions</p>
+                        <p>Help</p>
+                </StyledFooter>
+
+
+                                    <CenterHeader>
+                        <h2>Listings</h2> 
+                    </CenterHeader>   
+*/
