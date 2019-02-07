@@ -63,11 +63,9 @@ class ItemView extends React.Component {
     };
 
     rentItem = (itemId = this.props.location.pathname.split('/')[2]) => {
-        this.props.putItem(itemId, {"renter": localStorage.userId}) // change using localStorage
+        this.props.putItem(itemId, {"renter": parseInt(localStorage.userId)}) // change using localStorage
         alert('item rental request sent!');
     };
-
-
 
     render() {
       const data = this.props.location.state.itemClicked;
@@ -159,45 +157,3 @@ function mapStateToProps(state) {
 };
 
 export default connect(mapStateToProps, {getUsers, getItems, putItem})(ItemView);
-
-/* 
-
-      return (
-          <StyledItemContainer>
-            <StyledTopDiv>
-              <img src={data.image} />
-                <StyledItemDetails>
-                    <h3>{data.title}</h3>
-                    <p> Brand: {data.brand}</p>
-                    <p> Model: {data.model}</p>
-                    <p> Description: {data.description} </p>
-                    <p> Daily Price: {data.dailyPrice}</p>
-                    <p> Weekly Price: {data.weeklyPrice}</p>
-                    <Link to={{
-                        pathname: `/profile/${clickedUser[0].username}`,
-                        state: {
-                            user: clickedUser
-                            }
-                        }}>
-                        <p>Renter Profile Link: {clickedUser[0].username}</p>
-                    </Link>
-                </StyledItemDetails>
-            </StyledTopDiv>
-              {this.props.location.state.updatingItem && 
-                <form>
-                    <h3>Title: {
-                    <input 
-                    placeholder={data.title} 
-                    name='title' 
-                    onChange={this.handleChanges}/>}
-                    </h3>
-                </form>
-              }
-
-          </StyledItemContainer>
-      );  
-
-<button onClick={() => this.rentItem()}>Rent Request</button>
-
-
-*/

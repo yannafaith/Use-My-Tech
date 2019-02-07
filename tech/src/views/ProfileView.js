@@ -87,7 +87,7 @@ class ProfileView extends React.Component {
          label: '',
          model: '',
          title: '',
-         renter: 1,
+         renter: null,
          owner: localStorage.userId,
          imgUrl: null,
       },
@@ -132,7 +132,7 @@ class ProfileView extends React.Component {
       if (prevProps.items.length !== this.props.items.length) {
          this.props.getItems();
       }
-   }
+   };
 
    render() {
       console.log('this.props.match', this.props.match.params.username);

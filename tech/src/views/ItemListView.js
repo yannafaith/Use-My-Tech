@@ -53,7 +53,7 @@ class ItemListView extends React.Component {
             <div>              
                 <StyledContainer>
                     {this.props.items.map(item => {
-                        if (item.owner !== parseInt(localStorage.userId))
+                        if (item.owner !== parseInt(localStorage.userId) && item.renter == null)
                             {return (
                             <Link to={{
                                 pathname: `/item/${item.itemId}`,
