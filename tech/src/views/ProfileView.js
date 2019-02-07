@@ -6,14 +6,14 @@ import { Link } from 'react-router-dom';
 import AddItemForm from '../components/AddItemForm';
 
 const StyledProfileContainer = styled.div`
-   border: solid slategray 2px;
+   // border: solid slategray 2px;
    display: flex;
    flex-direction: column;
    padding-left: 2%;
    justify-content: space-around;
    width: 80%;
    margin-left: 6%;
-   height: 800px;
+   height: 1400px;
    margin-bottom: 5%;
    background-color: #0c1425;
    img {
@@ -24,7 +24,6 @@ const StyledProfileContainer = styled.div`
 `;
 
 const StyledUserDetails = styled.div`
-   // border: solid purple 2px;
    background-color: white;
    width: 300px;
    height: 200px;
@@ -34,37 +33,39 @@ const StyledUserDetails = styled.div`
 `;
 
 const StyledTopDiv = styled.div`
-   // border: solid green 1px;
    display: flex;
    width: 97%;
    justify-content: space-around;
    margin-right: 5%;
    height: 400px;
    background-color:  #f4f7fb;
+   // border-bottom: dashed #0c1425 1px;
 `;
 
 const StyledUserItemsContainer = styled.div`
    display: flex;
    flex-direction: row;
-   // border: solid blue 1px;
-   margin-right: 2.5%;
+   margin-right: 3%;
    justify-content: space-around;
-   min-height: 350px;
-   min-width: 90%;
-   overflow-x: auto;
+   flex-wrap: wrap
+   height: 450px;
+   overflow-x: scroll;
    background-color:  #f4f7fb;
 `;
 
 const StyledUserItem = styled.div`
-   min-width: 25%;
-   max-width: 50%;
-   min-height: 240px;
-   // border: dashed #0c1425 1px;
+   max-width: 30%;
+   min-width: 30%;
+   max-height: 600px;
    margin-top: 1%;
    margin-left: 15px;
    margin-bottom: 1%;
    text-align: center;
    background-color: white;
+      img {
+         width: 100px;
+         height: 100px;
+      }
 `;
 
 class ProfileView extends React.Component {
@@ -84,7 +85,7 @@ class ProfileView extends React.Component {
          title: '',
          renter: 1,
          owner: localStorage.userId,
-         //image: null
+         imgUrl: null
       },
       addingItem: false,
    };
@@ -128,7 +129,7 @@ class ProfileView extends React.Component {
             <div>
                <StyledProfileContainer>
                   <StyledTopDiv>
-                     <img src={user.image ? user.image : ''} alt="avatar" />
+                     <img src={user.thumbnail ? user.thumbnail : ''} alt="avatar" />
                      <StyledUserDetails>
                         <h2>{user.username}</h2>
                         <p>
@@ -142,10 +143,10 @@ class ProfileView extends React.Component {
                   <StyledUserItemsContainer>
                     {localStorage.username === this.props.match.params.username &&                      
                         <StyledUserItem>
-                        <AddItemForm
-                            submitHandler={this.submitHandler}
-                            changeHandler={this.changeHandler}
-                        />
+                           <AddItemForm
+                              submitHandler={this.submitHandler}
+                              changeHandler={this.changeHandler}
+                           />
                         </StyledUserItem>
                     }
                      {this.props.items.map(item => {
@@ -153,7 +154,7 @@ class ProfileView extends React.Component {
                            return (
                               <StyledUserItem>
                                  <h3> {item.title} </h3>
-                                 <img src={item.image} alt="item" />
+                                 <img src={item.imgUrl} alt="item" />
                                  <p>
                                     {' '}
                                     {item.brand} {item.model} {item.label}{' '}
@@ -163,6 +164,16 @@ class ProfileView extends React.Component {
                                     daily price: ${item.dailyPrice} <br />{' '}
                                     Weekly price: ${item.weeklyPrice}{' '}
                                  </p>
+                                 <Link to={{
+                                    pathname: `/item/${item.itemId}`,
+                                    state: {
+                                       itemClicked: item
+                                       }
+                                    
+                                    }}><button> Item Details</button>
+                                 </Link>
+
+
                                  {localStorage.username ===
                                     this.props.match.params.username && (
                                     <div>
@@ -193,6 +204,20 @@ class ProfileView extends React.Component {
                         }
                      })}
                   </StyledUserItemsContainer>
+
+                  <StyledUserItemsContainer>
+                     <h3>Rent Requests</h3>
+                     {this.props.items.map(item => {
+                        if (item.renter === user.userId) return (
+                           <div>
+                              <p>{item.title} </p>
+                           </div>
+                        ); 
+                     })}
+
+
+                  </StyledUserItemsContainer>
+
                </StyledProfileContainer>
             </div>
          );

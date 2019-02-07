@@ -26,7 +26,7 @@ const AddItemForm = (props) => {
                     placeholder = 'label'
                     name = 'label'
                     onChange = {props.changeHandler} />
-                                <input 
+                <input 
                     placeholder = 'model'
                     name = 'model'
                     onChange = {props.changeHandler} />
@@ -34,7 +34,7 @@ const AddItemForm = (props) => {
                     placeholder = 'title'
                     name = 'title'
                     onChange = {props.changeHandler} />
-                    <p> <input type='file' /> </p>
+                <input type='file' /> 
                 <button type='submit'>Add Item</button>
             </form>
         </div>

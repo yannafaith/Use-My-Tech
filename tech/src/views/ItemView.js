@@ -125,7 +125,7 @@ class ItemView extends React.Component {
                 :
 
                 <StyledTopDiv>
-                    <img alt='item' src={data.image} />
+                    <img alt='item' src={data.imgUrl} />
                     <StyledItemDetails>
                         <h3>{data.title}</h3>
                         <p> Brand: {data.brand}</p>
@@ -141,7 +141,8 @@ class ItemView extends React.Component {
                             }}>
                             <p>Renter Profile Link: {clickedUser[0].username}</p>
                         </Link>
-                        <button onClick={() => this.rentItem()}>Rent Request</button>
+                        {data.owner !== parseInt(localStorage.userId) && <div><button onClick={() => this.rentItem()}>Rent Request</button></div>}
+
                     </StyledItemDetails>
                 </StyledTopDiv>
               }
@@ -196,7 +197,7 @@ export default connect(mapStateToProps, {getUsers, getItems, putItem})(ItemView)
           </StyledItemContainer>
       );  
 
-
+<button onClick={() => this.rentItem()}>Rent Request</button>
 
 
 */

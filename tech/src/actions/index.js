@@ -22,14 +22,6 @@ export const LOGOUT = 'LOGOUT';
 
 export const REGISTER_USER_SUCCESS = 'REGISTER_USER_SUCCESS'
 
-/* NOT IN MVP
-export const PUT_USER_SUCCESS = 'PUT_ITEM_SUCCESS';
-export const PUT_USER_FAILURE = 'PUT_ITEM_FAILURE';
-
-export const DELETE_USER_SUCCESS = 'DELETE_ITEM_SUCCESS';
-export const DELETE_USER_FAILURE = 'DELETE_ITEM_FAILURE';
-*/
-
 export const login = creds => dispatch => {
    axios
       .post('https://use-my-tech-stuff.herokuapp.com/api/auth/login', creds)
@@ -121,4 +113,3 @@ export const putItem = (itemId, updatedItem) => dispatch => {
       .catch(err => dispatch({ type: PUT_ITEM_FAILURE, payload: err }));
 };
 
-// need to write delete and update item action creators

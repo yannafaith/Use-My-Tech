@@ -53,7 +53,8 @@ class ItemListView extends React.Component {
             <div>              
                 <StyledContainer>
                     {this.props.items.map(item => {
-                        return (
+                        if (item.owner !== parseInt(localStorage.userId))
+                            {return (
                             <Link to={{
                                 pathname: `/item/${item.itemId}`,
                                 state: {
@@ -61,12 +62,12 @@ class ItemListView extends React.Component {
                                 }}} > 
                                 <StyledLinksToItems>
                                     <h3> {item.title} </h3>
-                                    <img src={item.image} alt='item'/>
+                                    <img src={item.imgUrl} alt='item'/>
                                     <p> {item.brand} {item.model} {item.label} </p>
                                     <p> daily price: ${item.dailyPrice} <br/> Weekly price: ${item.weeklyPrice} </p>
                                 </StyledLinksToItems>
                             </Link>
-                        );
+                        )}
                     })}
                 </StyledContainer>
 

@@ -13,7 +13,7 @@ const StyledContainer = styled.div`
       display: flex;
       flex-direction: column;
       align-items: center;
-      background-color: slategray //#0c1425;
+      background-color: slategray;
    }
 `;
 
@@ -30,7 +30,7 @@ const StyledForm = styled.div`
          background-color: slategray; 
          input {
             height: 20px;
-           // background-color:  #f4f7fb;
+           background-color: white;
          }
          button {
             width: 100px;
@@ -73,9 +73,12 @@ class SignInView extends React.Component {
 
    submitHandlerLogin = e => {
       e.preventDefault();
-      localStorage.setItem('username', this.state.username);
-      this.props.login(this.state);
-
+      if (this.state.username !== null && this.state.password === 'password') {
+         localStorage.setItem('username', this.state.username);
+         this.props.login(this.state);
+      } else {
+         alert('invalid credentials! Please try again');
+      }
       this.setState({ username: '', password: ''});
    };
 
