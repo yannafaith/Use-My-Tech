@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import AddItemForm from '../components/AddItemForm';
 
 const StyledProfileContainer = styled.div`
-   // border: solid slategray 2px;
+   // border: solid red 2px;
    display: flex;
    flex-direction: column;
    padding-left: 2%;
@@ -30,6 +30,7 @@ const StyledUserDetails = styled.div`
    margin-top: 10%;
    padding-left: 10%;
    font-size: 18px;
+   // border: solid green 2px
 `;
 
 const StyledTopDiv = styled.div`
@@ -39,7 +40,7 @@ const StyledTopDiv = styled.div`
    margin-right: 5%;
    height: 400px;
    background-color:  #f4f7fb;
-   // border-bottom: dashed #0c1425 1px;
+   // border: solid blue 2px;
 `;
 
 const StyledUserItemsContainer = styled.div`
@@ -51,9 +52,11 @@ const StyledUserItemsContainer = styled.div`
    height: 450px;
    overflow-x: scroll;
    background-color:  #f4f7fb;
+   border: solid palevioletred 2px;
 `;
 
 const StyledUserItem = styled.div`
+   // border: solid pink 2px
    max-width: 30%;
    min-width: 30%;
    max-height: 600px;
@@ -206,16 +209,40 @@ class ProfileView extends React.Component {
                   </StyledUserItemsContainer>
 
                   <StyledUserItemsContainer>
-                     <h3>Rent Requests</h3>
-                     {this.props.items.map(item => {
-                        if (item.renter === user.userId) return (
-                           <div>
-                              <p>{item.title} </p>
-                           </div>
-                        ); 
-                     })}
+                     <div>
+                        <h3> Outbound Rent Requests</h3>
+                        {this.props.items.map(item => {
+                           if (item.renter === user.userId) return (
+                              <div>
+                                 <img src={item.imgUrl} alt='item' />
+                                 <p>{item.title} </p>
+                                 <p>Owned By {this.props.users.map(user => {
+                                    if (item.owner === user.userId) return user.username})}</p>
+                                 <Link to={{
+                                    pathname: `/item/${item.itemId}`,
+                                    state: {
+                                       itemClicked: item
+                                    }
+                                 }}><button>Item Details</button></Link>
+                              </div>
+                           ); 
+                        })}
+                     </div>
+                     <div>
+                        <h3>Inbound Rent Requests</h3>
+                        {this.props.items.map(item => {
+                           if (item.owner === user.userId && item.renter !== null) return (
+                              <div>
+                                 <img src={item.imgUrl} alt='item' />
+                                 <p>{item.title}</p>
+                                 <p>Rent Requested by {this.props.users.map(user => {
+                                    if (user.userId === item.renter) return (user.username)})} </p>
+                              </div>
+                           ) 
+                        })}
+                     </div>
 
-
+                     
                   </StyledUserItemsContainer>
 
                </StyledProfileContainer>
