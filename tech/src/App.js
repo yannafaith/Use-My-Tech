@@ -15,6 +15,9 @@ const StyledFooter = styled.footer`{
   justify-content: space-around;
   color: white;
   background-color: #0c1425;
+    :hover {
+      color: #cccccc
+    }
 }`;
 
 class App extends Component {

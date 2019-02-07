@@ -34,17 +34,36 @@ const StyledLinksToItems = styled.div`{
     text-align: center;
     margin-top: 2%;
     background-color: white;
-        :hover {
-            background-color: slategray;
-            color: black;
-        };
+     :hover {
+         text-decoration: none;
+         color: black;
+     }
     img {
-        width: 300px;
+        width: 350px;
         height: 235px;
         align-self: center;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
     };
     box-shadow: 0px 0px 27px -7px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
+    span {
+        font-weight: bold;
+    }
+    button {
+        border: 1px solid blue;
+        align-self: end;
+        color: blue;
+        border-radius: 5px;
+        height: 50px;
+        width: 100px;
+        align-self: center;
+        :hover {
+            color: white;
+            background-color: blue;
+        }
+        font-size: 16px;
+    }
 }`;
 
 const CenterHeader = styled.h4`{
@@ -73,18 +92,19 @@ class ItemListView extends React.Component {
                     {this.props.items.map(item => {
                         if (item.owner !== parseInt(localStorage.userId) && item.renter == null)
                             {return (
-                            <Link to={{
-                                pathname: `/item/${item.itemId}`,
-                                state: {
-                                    itemClicked: item
-                                }}} > 
                                 <StyledLinksToItems>
-                                    <h3> {item.title} </h3>
                                     <img src={item.imgUrl} alt='item'/>
-                                    <p> {item.brand} {item.model} {item.label} </p>
-                                    <p> daily price: ${item.dailyPrice} <br/> Weekly price: ${item.weeklyPrice} </p>
+                                    <p> <span>{item.title} </span>: ${item.dailyPrice}/day</p>
+                                    <p>{item.label}</p>
+                                    <Link to={{
+                                            pathname: `/item/${item.itemId}`,
+                                            state: {
+                                                itemClicked: item
+                                            }
+                                        }}>
+                                         <button>Rent</button> 
+                                    </Link>
                                 </StyledLinksToItems>
-                            </Link>
                         )}
                     })}
                 </StyledContainer>

@@ -6,7 +6,7 @@ import { getUsers, login, registerUser } from '../actions';
 
 const StyledContainer = styled.div`
     {
-      border: solid slategray 1px;
+      // border: solid slategray 1px;
       height: 300px;
       width: 50%;
       margin-left: 24%;
