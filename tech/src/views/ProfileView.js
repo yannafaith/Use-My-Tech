@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { getUsers, getItems, deleteItem, postItem } from '../actions';
 import { Link } from 'react-router-dom';
 import AddItemForm from '../components/AddItemForm';
+import axios from 'axios';
 
 const StyledProfileContainer = styled.div`
    // border: solid red 2px;
@@ -88,15 +89,16 @@ class ProfileView extends React.Component {
          title: '',
          renter: 1,
          owner: localStorage.userId,
-         imgUrl: null
+         imgUrl: null,
       },
       addingItem: false,
+      selectedImgUrl: null
    };
 
    componentDidMount() {
       this.props.getUsers();
       this.props.getItems();
-   }
+   };
 
    submitHandler = e => {
       e.preventDefault();
@@ -107,6 +109,23 @@ class ProfileView extends React.Component {
       this.setState({
          newItem: { ...this.state.newItem, [e.target.name]: e.target.value },
       });
+   };
+
+   fileHandler = (e) => {
+      this.setState({selectedImgUrl: e.target.files[0]});
+   };
+
+   uploadImg = (e) => {
+      e.preventDefault();
+      const fd = new FormData();
+      fd.append('image', this.state.selectedImgUrl);
+      axios
+         .post('https://use-my-tech-stuff.herokuapp.com/api/items/upload', fd)
+         .then(res => {
+            console.log(res);
+            this.setState({newItem: {...this.state.newItem, imgUrl: res.data.image}})
+         })
+         .catch(err => alert('err'));
    };
 
    componentDidUpdate(prevProps) {
@@ -149,6 +168,8 @@ class ProfileView extends React.Component {
                            <AddItemForm
                               submitHandler={this.submitHandler}
                               changeHandler={this.changeHandler}
+                              uploadImg={this.uploadImg}
+                              fileHandler={this.fileHandler}
                            />
                         </StyledUserItem>
                     }

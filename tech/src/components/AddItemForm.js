@@ -34,7 +34,12 @@ const AddItemForm = (props) => {
                     placeholder = 'title'
                     name = 'title'
                     onChange = {props.changeHandler} />
-                <input type='file' /> 
+                <input 
+                    name= 'file' 
+                    type='file' 
+                    onChange={props.fileHandler} 
+                /> 
+                <button onClick={props.uploadImg}>Upload</button>
                 <button type='submit'>Add Item</button>
             </form>
         </div>
