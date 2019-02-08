@@ -11,18 +11,17 @@ const StyledNav = styled.div`{
    justify-content: space-between;
    box-shadow: 0px 0px 27px -7px rgba(0, 0, 0, 0.5);
    position: fixed;
-   z-index: 1;
+   z-index: 2;
    width: 100%;
    background: #ffffff;
    top: 0;
    line-height: 30px;
-   font-family: 'Roboto';
    padding-left: 3%;
    .links {
       // border: solid red 2px;
       margin-right: 5%;
       align-items: center;
-      width: 500px;
+      width: 400px;
       display: flex;
       justify-content: space-around;
    }
@@ -41,8 +40,6 @@ class Navigation extends React.Component  {
               <h1> Tech Plum </h1>{' '}
            </Link>
            <div className='links'>
-           <Link to='/items'>Rent a Device</Link>
-           <Link to='/items'>List a Device</Link>
            <Link to='/items'>Plum Market</Link>
            <Link
                  to={{
@@ -80,68 +77,3 @@ export default connect(
    mapStateToProps,
    { getUsers, logout }
 )(Navigation);
-
-/* 
-const Navigation = props => {
-   const user = localStorage.getItem('username');
-   return (
-      <div>
-         <Link to="/items">
-            {' '}
-            <h1> Tech Vault </h1>{' '}
-         </Link>
-         {user && ( <div>
-            <Link
-               to={{
-                  pathname: `/profile/${user}`,
-                  state: {
-                     user: props.users.map(user => {
-                        if (user.username === user) return user;
-                     }),
-                  },
-               }}
-            >
-               {' '}
-               My Profile
-            </Link>
-
-            <Link
-               to={{
-                  pathname: `/logout`
-               }}
-            >
-               {' '}
-               <button onCLick={}>Logout</button>
-            </Link>
-            </div>
-         )}
-      </div>
-   );
-};
-
-           {user && ( <div className='links'>
-              <Link
-                 to={{
-                    pathname: `/profile/${user}`,
-                    state: {
-                       user: this.props.users.map(user => {
-                          if (user.username === user) return user;
-                       }),
-                    },
-                 }}
-              >
-                 {' '}
-                  Profile
-              </Link>
-
-              <Link onClick={() => this.props.logout()}
-                 to={{
-                    pathname: `/`
-                 }}
-              > Logout
-                 {' '}
-              </Link>
-              </div>
-           )}
-
-*/

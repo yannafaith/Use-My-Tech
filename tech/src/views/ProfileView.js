@@ -14,24 +14,38 @@ const StyledProfileContainer = styled.div`
    justify-content: space-around;
    width: 80%;
    margin-left: 6%;
-   height: 1400px;
+   height: 100%;
+   margin-top: 5%;
    margin-bottom: 5%;
-   background-color: #0c1425;
-   img {
-      border-radius: 50%;
-      height: 300px;
-      margin-top: 4%;
-   }
+   background-color: white; //#0c1425;
+      #thumbnail {
+         border-radius: 50%;
+         height: 300px;
+         margin-top: 4%;
+         margin-left: 20%;
+      };
+
 `;
+
+const CenterHeader = styled.div`{
+   display: flex;
+   justify-content: center;
+}`;
 
 const StyledUserDetails = styled.div`
    background-color: white;
    width: 300px;
    height: 200px;
    margin-top: 10%;
-   padding-left: 10%;
-   font-size: 18px;
+   padding-left: 5%;
+   font-size: 16px;
+   margin-right: 10%;
    // border: solid green 2px
+   display: flex;
+   flex-direction: column;
+   justify-content: space-around;
+   //line-height: .3;
+
 `;
 
 const StyledTopDiv = styled.div`
@@ -40,7 +54,7 @@ const StyledTopDiv = styled.div`
    justify-content: space-around;
    margin-right: 5%;
    height: 400px;
-   background-color:  #f4f7fb;
+   // background-color:  #f4f7fb;
    // border: solid blue 2px;
 `;
 
@@ -49,28 +63,205 @@ const StyledUserItemsContainer = styled.div`
    flex-direction: row;
    margin-right: 3%;
    justify-content: space-around;
-   flex-wrap: wrap
-   height: 450px;
+   flex-wrap: no-wrap;
+   // max-width: 100%;
+   max-height: 500px;
    overflow-x: scroll;
    background-color:  #f4f7fb;
-   border: solid palevioletred 2px;
-`;
+   // border: solid palevioletred 2px;
+      .requests {
+         // border: solid purple 2px;
+         width: 100%;
+            h3 {
+               text-align: center;
+            };
+         height: 500px;
+         display: flex;
+      };
+}`;
+
+const StyledUserItemsContainer2 = styled.div`
+   display: flex;
+   flex-direction: column;
+   margin-top: 0%;
+   margin-right: 3%;
+   justify-content: space-between;
+   flex-wrap: no-wrap;
+   // max-width: 100%;
+   max-height: 430px;
+   overflow-x: scroll;
+   background-color:  #f4f7fb;
+   // border: solid palevioletred 2px;
+      .requests {
+         // border: solid purple 2px;
+         width: 100%;
+            h3 {
+               text-align: center;
+            };
+         height: 500px;
+         display: flex;
+      };
+}`;
 
 const StyledUserItem = styled.div`
-   // border: solid pink 2px
+   // border: solid yellow 2px
+   // box-sizing: border-box;
    max-width: 30%;
    min-width: 30%;
-   max-height: 600px;
+   height: 300px;
    margin-top: 1%;
    margin-left: 15px;
+   margin-right: 15px;
    margin-bottom: 1%;
    text-align: center;
    background-color: white;
-      img {
-         width: 100px;
-         height: 100px;
+   box-shadow: 0px 0px 27px -7px rgba(0, 0, 0, 0.2);
+   border-radius: 5px;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-around;
+      p {
+         // border: solid blue 2px;
+         width: 100%;
+         height: 80px;
       }
-`;
+      #btn {
+         // border: solid green 2px;
+         display: flex;
+         justify-content: space-between;
+         position: relative;
+         bottom: 13%;
+         height: 50px;
+         padding-left: 20px;
+         padding-right: 20px;
+      };
+      img {
+         width: 100%;
+         height: 235px;
+         border-top-left-radius: 5px;
+         border-top-right-radius: 5px;
+         overflow-x: hidden;
+         box-sizing: border-box;
+         // border: solid red 1px;
+      };
+      #first {
+         font-size: 1rem;
+         font-weight: 500;
+         color: white;
+         background:  #0260ee;
+         border: none;
+         border-radius: 5px;
+         width: 80px;
+         height: 40px;
+         outline: none;
+         cursor: pointer;
+         text-align: center;
+         text-decoration: none;
+         // border: solid red 2px;
+         position: relative;
+         z-index: 1;
+      };
+      #second {
+         font-size: 1rem;
+         font-weight: 500;
+         color: white;
+         background: #e0a800;
+         border: none;
+         border-radius: 5px;
+         width: 80px;
+         height: 40px;
+         outline: none;
+         cursor: pointer;
+         text-align: center;
+         text-decoration: none;
+      };
+      #third {
+      font-size: 1rem;
+      font-weight: $font-weight-medium;
+      color: white;
+      background: #dc3545;
+      border: none;
+      border-radius: 5px;
+      width: 80px;
+      height: 40px;
+      outline: none;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+   };
+}`;
+
+const StyledUserItem2 = styled.div`
+   // border: solid yellow 2px
+   // box-sizing: border-box;
+   width: 70%;
+   height: 350px;
+   margin-top: 1%;
+   margin-left: 15px;
+   margin-right: 15px;
+   margin-bottom: 1%;
+   text-align: center;
+   background-color: white;
+   box-shadow: 0px 0px 27px -7px rgba(0, 0, 0, 0.2);
+   border-radius: 5px;
+      p {
+         // border: solid blue 2px;
+         width: 100%;
+         height: 20px;
+         overflow: hidden;
+      }
+      img {
+         width: 100%;
+         height: 235px;
+         border-top-left-radius: 5px;
+         border-top-right-radius: 5px;
+         overflow-x: hidden;
+         box-sizing: border-box;
+         // border: solid red 10px;
+      };
+      #first {
+         font-size: 1rem;
+         font-weight: 500;
+         color: white;
+         background:  #0260ee;
+         border: none;
+         border-radius: 5px;
+         width: 90px;
+         height: 40px;
+         outline: none;
+         cursor: pointer;
+         text-align: center;
+         text-decoration: none;
+      };
+}`;
+
+const FormContainer = styled.div`{
+   // border: solid blue 2px;
+   display: flex;
+   flex-direction: column-reverse;
+   align-items: center;
+   justify-content: flex-end;
+   height: 150px;
+   // background-color: #0c1425;
+      #fourth {
+         font-size: 1rem;
+         font-weight: $font-weight-medium;
+         color: blue;
+         background: white;
+         border: blue solid 1px;
+         border-radius: 5px;
+         width: 150px;
+         height: 50px;
+         outline: none;
+         cursor: pointer;
+         text-align: center;
+         text-decoration: none;
+            :hover {
+               background: blue;
+               color: white;
+            }
+      }
+}`;
 
 class ProfileView extends React.Component {
    // display user items, requests, and reviews
@@ -92,7 +283,8 @@ class ProfileView extends React.Component {
          imgUrl: null,
       },
       addingItem: false,
-      selectedImgUrl: null
+      selectedImgUrl: null,
+      showAddForm: false
    };
 
    componentDidMount() {
@@ -105,15 +297,17 @@ class ProfileView extends React.Component {
       this.props.postItem(this.state.newItem);
    };
 
+   fileHandler = (e) => {
+      this.setState({selectedImgUrl: e.target.files[0]});
+   };
+
    changeHandler = e => {
       this.setState({
          newItem: { ...this.state.newItem, [e.target.name]: e.target.value },
       });
    };
 
-   fileHandler = (e) => {
-      this.setState({selectedImgUrl: e.target.files[0]});
-   };
+
 
    uploadImg = (e) => {
       e.preventDefault();
@@ -135,14 +329,13 @@ class ProfileView extends React.Component {
    };
 
    render() {
-      console.log('this.props.match', this.props.match.params.username);
+      let count = 0;
       const user = this.props.users.find(user => {
          return (
             user.username.toLowerCase() ===
             this.props.match.params.username.toLowerCase()
          );
       });
-      console.log('user', user);
 
       if (!user) {
          return <h1>Loading...</h1>;
@@ -151,75 +344,51 @@ class ProfileView extends React.Component {
             <div>
                <StyledProfileContainer>
                   <StyledTopDiv>
-                     <img src={user.thumbnail ? user.thumbnail : ''} alt="avatar" />
+                     <img id='thumbnail' src={user.thumbnail ? user.thumbnail : ''} alt="avatar" />
                      <StyledUserDetails>
                         <h2>{user.username}</h2>
                         <p>
-                           name: {user.firstname} {user.lastname}
+                           {user.firstname} {user.lastname}
                         </p>
-                        <p>email: {user.email}</p>
-                        <p>phone number: {user.phone}</p>
+                        <p> {user.email}</p>
+                        <p> {user.phone}</p>
                      </StyledUserDetails>
                   </StyledTopDiv>
 
+                  <CenterHeader><h2> Items for Rent </h2></CenterHeader>
                   <StyledUserItemsContainer>
-                    {localStorage.username === this.props.match.params.username &&                      
-                        <StyledUserItem>
-                           <AddItemForm
-                              submitHandler={this.submitHandler}
-                              changeHandler={this.changeHandler}
-                              uploadImg={this.uploadImg}
-                              fileHandler={this.fileHandler}
-                           />
-                        </StyledUserItem>
-                    }
                      {this.props.items.map(item => {
-                        if (item.owner === user.userId) {
+                        if (item.owner == user.userId) {
                            return (
                               <StyledUserItem>
-                                 <h3> {item.title} </h3>
                                  <img src={item.imgUrl} alt="item" />
-                                 <p>
-                                    {' '}
-                                    {item.brand} {item.model} {item.label}{' '}
-                                 </p>
-                                 <p>
-                                    {' '}
-                                    daily price: ${item.dailyPrice} <br />{' '}
-                                    Weekly price: ${item.weeklyPrice}{' '}
-                                 </p>
-                                 <Link to={{
-                                    pathname: `/item/${item.itemId}`,
-                                    state: {
-                                       itemClicked: item
-                                       }
-                                    
-                                    }}><button> Item Details</button>
-                                 </Link>
-
-
+                                 <p> <span>{item.title} </span>: ${item.dailyPrice}/day</p>
+                                    <Link to={{
+                                            pathname: `/item/${item.itemId}`,
+                                            state: {
+                                                itemClicked: item
+                                            }
+                                        }}>
+                                         <button id='first'>View</button> 
+                                    </Link>
                                  {localStorage.username ===
                                     this.props.match.params.username && (
-                                    <div>
-                                       <button
+                                    <div id='btn'>
+                                       <button id='second'
                                           onClick={() =>
                                              this.props.deleteItem(item.itemId)
                                           }
-                                       >
-                                          Garbage
+                                       >Delete
                                        </button>
                                        <Link
                                           to={{
-                                             pathname: `/item/${
-                                                item.itemId
-                                             }/edit`,
+                                             pathname: `/item/${item.itemId}/edit`,
                                              state: {
                                                 itemClicked: item,
                                                 updatingItem: true,
                                              },
-                                          }}
-                                       >
-                                          <button>Update Item</button>
+                                          }}>
+                                          <button id='third'>Update</button>
                                        </Link>
                                     </div>
                                  )}
@@ -229,45 +398,78 @@ class ProfileView extends React.Component {
                      })}
                   </StyledUserItemsContainer>
 
-                  <StyledUserItemsContainer>
-                     <div>
-                        <h3> Outbound Rent Requests</h3>
-                        {this.props.items.map(item => {
-                           if (item.renter === user.userId) return (
-                              <div>
-                                 <img src={item.imgUrl} alt='item' />
-                                 <p>{item.title} </p>
-                                 <p>Owned By {this.props.users.map(user => {
-                                    if (item.owner === user.userId) return user.username})}</p>
-                                 <Link to={{
-                                    pathname: `/item/${item.itemId}`,
-                                    state: {
-                                       itemClicked: item
-                                    }
-                                 }}><button>Item Details</button></Link>
-                              </div>
-                           ); 
-                        })}
-                     </div>
-                     <div>
-                        <h3>Inbound Rent Requests</h3>
-                        {this.props.items.map(item => {
-                           if (item.owner === user.userId && item.renter !== null) return (
-                              <div>
-                                 <img src={item.imgUrl} alt='item' />
-                                 <p>{item.title}</p>
-                                 <p>Rent Requested by {this.props.users.map(user => {
-                                    if (user.userId === item.renter) return (user.username)})} </p>
-                              </div>
-                           ) 
-                        })}
-                     </div>
+                  {this.props.match.params.username === localStorage.username &&
+                     <FormContainer>
+                        <button id='fourth' onClick={() => {
+                           this.state.showAddForm === false ? this.setState({showAddForm: true}) : this.setState({showAddForm: false});
+                        }}>{this.state.showAddForm === false ? 'Add Item' : 'Done'}</button>
 
+                        {this.state.showAddForm && <AddItemForm 
+                           submitHandler={this.submitHandler}
+                           changeHandler={this.changeHandler}
+                           uploadImg={this.uploadImg}
+                           fileHandler={this.fileHandler}/> }
+                     </FormContainer>
+                  }
+
+                  {
+                     this.props.match.params.username === localStorage.username &&
+                     <div>
+                     <CenterHeader><h2> Rent Requests</h2></CenterHeader>
+                     <StyledUserItemsContainer2>
+                     <CenterHeader><h4> Outbound</h4></CenterHeader>
+                        <div className='requests'>
+                           {this.props.items.map(item => {
+                              if (item.renter === user.userId) return (
+                                 <StyledUserItem2>
+                                    <img src={item.imgUrl} alt='item' />
+                                    <p>{item.title} </p>
+                                    <Link to={{
+                                       pathname: `/item/${item.itemId}`,
+                                       state: {
+                                          itemClicked: item
+                                       }
+                                    }}><button id='first'>View</button></Link>
+                                 </StyledUserItem2>
+                              ); 
+                           })}
+                        </div>
+   
+                        {this.props.items.map(item => {
+                           if (item.owner === localStorage.userId) {
+                              count+=1
+                              return count;
+                           }}
+                        )}
+   
+                        {count !== 0 ? (
+                           <div className='test' >
+                              <CenterHeader><h4>Inbound</h4></CenterHeader>
+                              {this.props.items.map(item => {
+                                 if (item.owner === user.userId && item.renter !== null) return (
+                                    <StyledUserItem2>
+                                       <img src={item.imgUrl} alt='item' />
+                                       <p>{item.title}</p>
+                                       <p>Rent Requested by {this.props.users.map(user => {
+                                          if (user.userId === item.renter) return (user.username)})} </p>
+                                    </StyledUserItem2>
+                                 ) 
+                              })}
+                           </div>
+                        ) : <CenterHeader><h3>No inbound requests found</h3></CenterHeader>
+                        }
+                     </StyledUserItemsContainer2>
+                     </div>
                      
-                  </StyledUserItemsContainer>
+                  }
+
+
+
+
 
                </StyledProfileContainer>
             </div>
+
          );
       }
    }
@@ -284,3 +486,18 @@ export default connect(
    mapStateToProps,
    { getUsers, getItems, deleteItem, postItem }
 )(ProfileView);
+
+
+/*
+
+{localStorage.username === this.props.match.params.username &&                      
+   <StyledUserItem>
+      <AddItemForm
+         submitHandler={this.submitHandler}
+         changeHandler={this.changeHandler}
+         uploadImg={this.uploadImg}
+         fileHandler={this.fileHandler}
+      />
+   </StyledUserItem>
+
+*/

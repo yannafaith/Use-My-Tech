@@ -28,12 +28,17 @@ const StyledLinksToItems = styled.div`{
     // border: solid slategray .5px;
     border-radius: 5px;
     height: 400px;
-    margin-bottom: 5%;
+    margin-bottom: 3%;
     display: flex;
     flex-direction: column;
     text-align: center;
-    margin-top: 2%;
+    margin-top: 3%;
     background-color: white;
+    p {
+        height: 20px;
+
+    }
+    
      :hover {
          text-decoration: none;
          color: black;

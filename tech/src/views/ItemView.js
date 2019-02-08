@@ -13,7 +13,7 @@ const StyledItemContainer = styled.div`{
     background-color: #f4f7fb
     width: 80%;
     margin-left: 6%;
-    height: 540px;
+    height: 600px;
     margin-top: 5%;
     padding-top: 0%;
         img {
@@ -21,6 +21,37 @@ const StyledItemContainer = styled.div`{
             width: 500px;
             margin-top: 4%;
         };
+        #edit-form {
+            // border: solid green 5px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            width: 75%;
+            height: 500px;
+            margin-top: 5%;
+                button {
+                    font-size: 1rem;
+                    font-weight: $font-weight-medium;
+                    color: blue;
+                    background: white;
+                    border: blue solid 1px;
+                    border-radius: 5px;
+                    width: 150px;
+                    height: 50px;
+                    outline: none;
+                    cursor: pointer;
+                    text-align: center;
+                    text-decoration: none;
+                       :hover {
+                          background: blue;
+                          color: white;
+                       }
+                }
+                img {
+                    display: none;
+                };
+        }
 }`;
 
 const StyledItemDetails = styled.div`{
@@ -63,6 +94,7 @@ const StyledTopDiv = styled.div`{
     }
     span {
         font-weight: bold;
+        font-size: 14px;
     }
 }`;
 
@@ -95,6 +127,7 @@ class ItemView extends React.Component {
         alert('item rental request sent!');
     };
 
+
     render() {
       const data = this.props.location.state.itemClicked;
 
@@ -106,7 +139,7 @@ class ItemView extends React.Component {
       return (
           <StyledItemContainer>
               {this.props.location.state.updatingItem ?
-                <form onSubmit={this.submit}>
+                <form id='edit-form' onSubmit={this.submit}>
                     <img style={{width: '275px', height: '275px'}}src={data.image} />
                     <p>Change Image? <input type='file'/> </p>
                     <p>Title: {
