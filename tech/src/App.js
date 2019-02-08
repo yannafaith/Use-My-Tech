@@ -13,8 +13,11 @@ const StyledFooter = styled.footer`{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  padding-right: 50%;
   color: white;
   background-color: #0c1425;
+  height: 95px;
+  align-items: center;
     :hover {
       color: #cccccc
     }

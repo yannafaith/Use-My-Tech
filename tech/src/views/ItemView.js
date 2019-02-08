@@ -5,37 +5,65 @@ import styled from 'styled-components';
 import { getUsers, getItems, putItem } from '../actions';
 
 const StyledItemContainer = styled.div`{
-    border: solid slategray 2px;
+    // border: solid slategray 2px;
     display: flex;
     flex-direction: row;
     padding-left: 2%;
-    justify-content: space-around;
+    justify-content: space-center;
+    background-color: #f4f7fb
     width: 80%;
     margin-left: 6%;
-    height: 800px;
+    height: 540px;
+    margin-top: 5%;
+    padding-top: 0%;
         img {
-            height: 300px;
+            height: 350px;
+            width: 500px;
             margin-top: 4%;
         };
 }`;
 
 const StyledItemDetails = styled.div`{
     // border: solid purple 2px;
-    width: 300px;
-    height: 200px;
-    margin-top: 6%;
-    padding-left: 10%;
-    font-size: 18px;
+    width: 500px;
+    height: 400px;
+    margin-top: 0%;
+    padding-left: 5%;
+    font-size: 17px;
+    display: flex;
+    flex-direction: column;
+    justify-content: evenly;
+    // background-color: white;
+
+    button {
+        border: 1px solid blue;
+        align-self: center;
+        color: blue;
+        border-radius: 5px;
+        height: 50px;
+        width: 100px;
+        align-self: center;
+        :hover {
+            color: white;
+            background-color: blue;
+        }
+    }
 }`;
 
 const StyledTopDiv = styled.div`{
-    border-bottom: dashed slategray 1px;
+    // border: dashed red 1px;
     display: flex;
     width: 100%;
     justify-content: space-around;
     margin-right: 3%;
-    height: 400px;
+    height: 100px;
     margin-top: 50px;
+    .profile {
+        color: gray;
+    }
+    span {
+        font-weight: bold;
+    }
 }`;
 
 
@@ -125,20 +153,20 @@ class ItemView extends React.Component {
                 <StyledTopDiv>
                     <img alt='item' src={data.imgUrl} />
                     <StyledItemDetails>
-                        <h3>{data.title}</h3>
-                        <p> Brand: {data.brand}</p>
-                        <p> Model: {data.model}</p>
-                        <p> Description: {data.description} </p>
-                        <p> Daily Price: {data.dailyPrice}</p>
-                        <p> Weekly Price: {data.weeklyPrice}</p>
+                        <h3>{data.title} <br/>
                         <Link to={{
                             pathname: `/profile/${clickedUser[0].username}`,
                             state: {
                                 user: clickedUser
                                 }
                             }}>
-                            <p>Renter Profile Link: {clickedUser[0].username}</p>
-                        </Link>
+                            <span className='profile'> {clickedUser[0].username}</span>
+                        </Link> </h3>
+                        <p>${data.dailyPrice} <span>per day</span></p>
+                        <p>${data.weeklyPrice} <span>per week</span></p>
+                        <p> Brand: <span> {data.brand} </span></p> 
+                        <p> Model: <span>{data.model} </span></p> <br/>
+                        <p> {data.description}</p>
                         {data.owner !== parseInt(localStorage.userId) && <div><button onClick={() => this.rentItem()}>Rent Request</button></div>}
 
                     </StyledItemDetails>

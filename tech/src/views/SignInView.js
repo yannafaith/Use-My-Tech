@@ -7,13 +7,14 @@ import { getUsers, login, registerUser } from '../actions';
 const StyledContainer = styled.div`
     {
       // border: solid slategray 1px;
-      height: 300px;
+      height: 405px;
       width: 50%;
       margin-left: 24%;
       display: flex;
       flex-direction: column;
       align-items: center;
       background-color: #f4f7fb;
+      justify-content: space-evenly;
       margin-top: 10%;
       margin-bottom: 5%;
    }
