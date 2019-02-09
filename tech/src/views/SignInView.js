@@ -76,7 +76,7 @@ class SignInView extends React.Component {
 
    submitHandlerLogin = e => {
       e.preventDefault();
-      if (this.state.username !== null && this.state.password === 'password') {
+      if (this.state.username !== null) {
          localStorage.setItem('username', this.state.username);
          this.props.login(this.state);
       } else {
