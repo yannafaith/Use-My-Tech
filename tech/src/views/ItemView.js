@@ -13,7 +13,7 @@ const StyledItemContainer = styled.div`{
     background-color: #f4f7fb
     width: 80%;
     margin-left: 6%;
-    height: 600px;
+    height: 550px;
     margin-top: 5%;
     padding-top: 0%;
         img {
@@ -195,11 +195,13 @@ class ItemView extends React.Component {
                             }}>
                             <span className='profile'> {clickedUser[0].username}</span>
                         </Link> </h3>
-                        <p>${data.dailyPrice} <span>per day</span></p>
-                        <p>${data.weeklyPrice} <span>per week</span></p>
-                        <p> Brand: <span> {data.brand} </span></p> 
-                        <p> Model: <span>{data.model} </span></p> <br/>
-                        <p> {data.description}</p>
+                        <p>
+                            ${data.dailyPrice} <span>per day</span> <br/>
+                            ${data.weeklyPrice} <span>per week</span> <br/> <br/>
+                            Brand: <span> {data.brand} </span> <br/>
+                            Model: <span>{data.model} </span> <br/> <br/>
+                            {data.description} <br/>
+                        </p>
                         {data.owner !== parseInt(localStorage.userId) && <div><button onClick={() => this.rentItem()}>Rent Request</button></div>}
 
                     </StyledItemDetails>

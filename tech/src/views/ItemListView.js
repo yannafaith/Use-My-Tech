@@ -14,7 +14,7 @@ const StyledContainer = styled.div`{
     flex-wrap: wrap;
     margin: 5%;
     margin-top: 3%;
-    max-height: 600px;
+    max-height: 532px;
     overflow: scroll;
     justify-content: space-around;
     margin-bottom: 2%;
@@ -32,7 +32,6 @@ const StyledLinksToItems = styled.div`{
     display: flex;
     flex-direction: column;
     text-align: center;
-    margin-top: 3%;
     background-color: white;
     p {
         height: 20px;
@@ -73,9 +72,21 @@ const StyledLinksToItems = styled.div`{
 
 const CenterHeader = styled.h4`{
     justify-self: center;
-    // border: solid green 2px;
+    border: solid green 2px;
     text-align: center;
     margin-top: 8%;
+}`
+
+const Container = styled.div`{
+    display: flex;
+    flex-direction: row;
+    // border: solid blue 5px;
+    z-index: 0;
+    width: 100%;
+    justify-content: center;
+    height: 100px;
+    align-items: flex-end;
+    margin-top: 1%;
 }`
 
 
@@ -90,10 +101,10 @@ class ItemListView extends React.Component {
 
         return (
             <div>        
-                <CenterHeader>
-                    <h2>Listings</h2> 
-                </CenterHeader>   
                 <StyledContainer>
+                    <Container> 
+                       <h2>Listings</h2>
+                    </Container>
                     {this.props.items.map(item => {
                         if (item.owner !== parseInt(localStorage.userId) && item.renter == null)
                             {return (

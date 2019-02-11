@@ -18,9 +18,11 @@ const StyledFooter = styled.footer`{
   background-color: #0c1425;
   height: 95px;
   align-items: center;
-    :hover {
-      color: #cccccc
-    }
+    p {
+      :hover {
+        color: #cccccc
+      };
+    };
 }`;
 
 class App extends Component {
@@ -35,7 +37,7 @@ class App extends Component {
           <Route path='/profile/:username' component={ProfileView} />
         </div>
         <StyledFooter>
-          <p>@2019 Tech Plum</p>
+          <p>Tech Plum 2019</p>
           <p>Privacy Policy</p>
           <p>Terms and Conditions</p>
           <p>Help</p>

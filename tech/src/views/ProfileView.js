@@ -40,11 +40,15 @@ const StyledUserDetails = styled.div`
    padding-left: 5%;
    font-size: 16px;
    margin-right: 10%;
-   // border: solid green 2px
+   //border: solid green 2px
    display: flex;
    flex-direction: column;
    justify-content: space-around;
-   //line-height: .3;
+      p {
+         // border: solid red 2px;
+         margin-top: 0%;
+         line-height: 1;
+      }
 
 `;
 
@@ -189,6 +193,7 @@ const StyledUserItem = styled.div`
       text-align: center;
       text-decoration: none;
    };
+
 }`;
 
 const StyledUserItem2 = styled.div`
@@ -328,6 +333,10 @@ class ProfileView extends React.Component {
       }
    };
 
+   cancelRequest = () => {
+      
+   };
+
    render() {
       let count = 0;
       const user = this.props.users.find(user => {
@@ -346,16 +355,16 @@ class ProfileView extends React.Component {
                   <StyledTopDiv>
                      <img id='thumbnail' src={user.thumbnail ? user.thumbnail : ''} alt="avatar" />
                      <StyledUserDetails>
-                        <h2>{user.username}</h2>
                         <p>
-                           {user.firstname} {user.lastname}
+                           <h2>{user.username}</h2>{user.firstname} {user.lastname} <br/> {user.email} <br/> {user.phone}
                         </p>
-                        <p> {user.email}</p>
-                        <p> {user.phone}</p>
                      </StyledUserDetails>
                   </StyledTopDiv>
 
-                  <CenterHeader><h2> Items for Rent </h2></CenterHeader>
+                  <CenterHeader>
+                     <h2> {this.props.match.params.username === localStorage.username ? 'Your Items' 
+                     : 'Items for Rent'}</h2>
+                  </CenterHeader>
                   <StyledUserItemsContainer>
                      {this.props.items.map(item => {
                         if (item.owner == user.userId) {
@@ -430,6 +439,9 @@ class ProfileView extends React.Component {
                                           itemClicked: item
                                        }
                                     }}><button id='first'>View</button></Link>
+                                    <button onClick={() => this.cancelRequest()}>
+                                       Cancel Request
+                                    </button>
                                  </StyledUserItem2>
                               ); 
                            })}
