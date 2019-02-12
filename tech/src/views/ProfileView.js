@@ -197,7 +197,7 @@ const StyledUserItem = styled.div`
 }`;
 
 const StyledUserItem2 = styled.div`
-   border: solid yellow 2px
+   // border: solid yellow 2px
    // box-sizing: border-box;
    max-width: 30%;
    min-width: 30%;
@@ -238,6 +238,21 @@ const StyledUserItem2 = styled.div`
          cursor: pointer;
          text-align: center;
          text-decoration: none;
+      };
+      #third {
+         font-size: 1rem;
+         font-weight: $font-weight-medium;
+         color: white;
+         background: #dc3545;
+         border: none;
+         border-radius: 5px;
+         width: 90px;
+         height: 40px;
+         outline: none;
+         cursor: pointer;
+         text-align: center;
+         text-decoration: none;
+         margin-left: 10px;
       };
 }`;
 
@@ -380,7 +395,7 @@ class ProfileView extends React.Component {
                                  {localStorage.username ===
                                     this.props.match.params.username && (
                                     <div id='btn'>
-                                       <button id='second'
+                                       <button id='third'
                                           onClick={() =>
                                              this.props.deleteItem(item.itemId)
                                           }
@@ -394,7 +409,7 @@ class ProfileView extends React.Component {
                                                 updatingItem: true,
                                              },
                                           }}>
-                                          <button id='third'>Update</button>
+                                          <button id='second'>Update</button>
                                        </Link>
                                     </div>
                                  )}
@@ -436,10 +451,10 @@ class ProfileView extends React.Component {
                                           itemClicked: item
                                        }
                                     }}><button id='first'>View</button></Link>
-                                    <button onClick={() => {
+                                    <button id='third' onClick={() => {
                                        this.props.putItem(item.itemId, {renter: null})}
                                        }>
-                                       Cancel Request
+                                       Cancel
                                     </button>
                                  </StyledUserItem2>
                               ); 
