@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import { getUsers, getItems, deleteItem, postItem } from '../actions';
+import { getUsers, getItems, deleteItem, postItem, putItem } from '../actions';
 import { Link } from 'react-router-dom';
 import AddItemForm from '../components/AddItemForm';
 import axios from 'axios';
@@ -197,9 +197,10 @@ const StyledUserItem = styled.div`
 }`;
 
 const StyledUserItem2 = styled.div`
-   // border: solid yellow 2px
+   border: solid yellow 2px
    // box-sizing: border-box;
-   width: 70%;
+   max-width: 30%;
+   min-width: 30%;
    height: 350px;
    margin-top: 1%;
    margin-left: 15px;
@@ -333,10 +334,6 @@ class ProfileView extends React.Component {
       }
    };
 
-   cancelRequest = () => {
-      
-   };
-
    render() {
       let count = 0;
       const user = this.props.users.find(user => {
@@ -439,7 +436,9 @@ class ProfileView extends React.Component {
                                           itemClicked: item
                                        }
                                     }}><button id='first'>View</button></Link>
-                                    <button onClick={() => this.cancelRequest()}>
+                                    <button onClick={() => {
+                                       this.props.putItem(item.itemId, {renter: null})}
+                                       }>
                                        Cancel Request
                                     </button>
                                  </StyledUserItem2>
@@ -496,7 +495,7 @@ function mapStateToProps(state) {
 
 export default connect(
    mapStateToProps,
-   { getUsers, getItems, deleteItem, postItem }
+   { getUsers, getItems, deleteItem, postItem, putItem }
 )(ProfileView);
 
 
