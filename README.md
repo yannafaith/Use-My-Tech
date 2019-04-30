@@ -2,7 +2,7 @@
 Build Week Project 
 
 This site is live at:
-https://tender-wing-a592f5.netlify.com/
+https://confident-volhard-2cd954.netlify.com/
 
 
 Pitch: Like AirBnB but for high end electronics. Tired of paying ridiculous fees for camera and other equipment rentals? Bypass the middleman and rent from a real person! 
