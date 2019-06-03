@@ -40,7 +40,7 @@ class Navigation extends React.Component  {
               <h1> Tech Plum </h1>{' '}
            </Link>
            <div className='links'>
-           <a href='https://tender-wing-a592f5.netlify.com/'>About</a>
+           <a href='https://blissful-goldberg-662c12.netlify.com/'>About</a>
            <Link to='/items'>Plum Market</Link>
            <Link
                  to={{
