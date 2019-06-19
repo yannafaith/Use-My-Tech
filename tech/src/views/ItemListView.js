@@ -8,74 +8,70 @@ import { getItems, getUsers } from '../actions';
  // background-color: #0c1425;
 
 const StyledContainer = styled.div`{
-    //border: solid slategray 2px;
+    // border: solid slategray 2px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     margin: 5%;
-    margin-top: 3%;
-    max-height: 532px;
+    margin-top: 5%;
+    max-height: 675px;
     overflow: scroll;
     justify-content: space-around;
     margin-bottom: 2%;
     background-color: #f4f7fb;
-    // margin-top: 0%;
 
 }`;
 
 const StyledLinksToItems = styled.div`{
     width: 350px;
-    // border: solid slategray .5px;
     border-radius: 5px;
     height: 400px;
-    margin-bottom: 3%;
+    margin-bottom: 1.5%;
     display: flex;
     flex-direction: column;
-    text-align: center;
     background-color: white;
+    box-shadow: 0px 0px 27px -7px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+
     p {
         height: 20px;
-
-    }
+        margin-left: 20px;
+    };
     
-     :hover {
-         text-decoration: none;
-         color: black;
-     }
     img {
-        width: 350px;
+        width: 100%;
         height: 235px;
         align-self: center;
         border-top-left-radius: 5px;
         border-top-right-radius: 5px;
     };
-    box-shadow: 0px 0px 27px -7px rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
+
+
     span {
         font-weight: bold;
-    }
+    };
+
     button {
         border: 1px solid blue;
-        align-self: end;
         color: blue;
         border-radius: 5px;
-        height: 50px;
-        width: 100px;
-        align-self: center;
+        height: 40px;
+        width: 150px;
+        font-size: 16px;
+        margin-left: 20px;
+        cursor: pointer;
+
         :hover {
             color: white;
             background-color: blue;
-        }
-        font-size: 16px;
-    }
-}`;
+        };
+    };
 
-const CenterHeader = styled.h4`{
-    justify-self: center;
-    border: solid green 2px;
-    text-align: center;
-    margin-top: 8%;
-}`
+    a {
+        width: 190px;
+    };
+
+}`;
 
 const Container = styled.div`{
     display: flex;
@@ -84,9 +80,13 @@ const Container = styled.div`{
     z-index: 0;
     width: 100%;
     justify-content: center;
-    height: 100px;
     align-items: flex-end;
-    margin-top: 1%;
+
+    h2 {
+        font-size: 2rem;
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
 }`
 
 

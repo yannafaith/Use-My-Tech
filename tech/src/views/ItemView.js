@@ -55,7 +55,6 @@ const StyledItemContainer = styled.div`{
 }`;
 
 const StyledItemDetails = styled.div`{
-    // border: solid purple 2px;
     width: 500px;
     height: 400px;
     margin-top: 0%;
@@ -63,17 +62,17 @@ const StyledItemDetails = styled.div`{
     font-size: 17px;
     display: flex;
     flex-direction: column;
-    justify-content: evenly;
-    // background-color: white;
+
 
     button {
         border: 1px solid blue;
         align-self: center;
         color: blue;
         border-radius: 5px;
-        height: 50px;
-        width: 100px;
+        height: 40px;
+        width: 150px;
         align-self: center;
+        margin-top: 20px;
         :hover {
             color: white;
             background-color: blue;
@@ -82,13 +81,13 @@ const StyledItemDetails = styled.div`{
 }`;
 
 const StyledTopDiv = styled.div`{
-    // border: dashed red 1px;
     display: flex;
     width: 100%;
     justify-content: space-around;
     margin-right: 3%;
     height: 100px;
     margin-top: 50px;
+    
     .profile {
         color: gray;
     }

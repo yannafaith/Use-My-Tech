@@ -5,9 +5,9 @@ import { getUsers, logout } from '../actions';
 import styled from 'styled-components';
 
 const StyledNav = styled.div`{
-   // border: solid red 2px;
    display: flex;
    width: 99%;
+   height: 90px;
    justify-content: space-between;
    box-shadow: 0px 0px 27px -7px rgba(0, 0, 0, 0.5);
    position: fixed;
@@ -26,6 +26,11 @@ const StyledNav = styled.div`{
       justify-content: space-around;
    }
    align-items: center;
+   h1 {
+      font-family: 'Roboto';
+      font-weight: 900;
+      font-size: 24px;
+   }
 }`;
 
 class Navigation extends React.Component  {

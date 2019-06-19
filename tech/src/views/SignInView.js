@@ -6,12 +6,12 @@ import { getUsers, login, registerUser } from '../actions';
 
 const StyledContainer = styled.div`
     {
-      // border: solid slategray 1px;
-      height: 405px;
-      width: 50%;
-      margin-left: 24%;
+      border: solid slategray 1px;
+      height: 500px;
+      width: 90%;
+      margin: 0 auto;
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       align-items: center;
       background-color: #f4f7fb;
       justify-content: space-evenly;
@@ -26,19 +26,39 @@ const StyledForm = styled.div`
       form {
          display: flex;
          flex-direction: column;
-         // border: solid slategray 1px;
          width: 500px;
          justify-content: center;
          margin-top: 5%;
          background-color: #f4f7fb; 
+         
          input {
-            height: 20px;
+           height: 35px;
            background-color: white;
+           margin-bottom: 10px;
+           padding-left: 15px;
+           border: none;
+           border-radius: 5px;
          }
+
          button {
-            width: 100px;
-            height: 20px;
+            width: 175px;
+            height: 45px;
             align-self: center;
+            background-color: white;
+            border-color: blue;
+            color: blue;
+            font-weight: 700;
+            font-size: .9rem;
+            font-family: 'Roboto';
+            border-radius: 5px;
+            letter-spacing: 1px;
+            margin-top: 20px;
+
+            :hover {
+               background-color: blue;
+               color: white;
+               cursor: pointer;
+            }
          }
       }
    }
@@ -142,7 +162,7 @@ class SignInView extends React.Component {
                            name="password"
                            onChange={this.changeHandlerLogin}
                         />
-                        <button type="submit">Sign In!</button>
+                        <button type="submit">Login</button>
                      </form>
                   </StyledForm>
                   <StyledForm>
@@ -177,7 +197,7 @@ class SignInView extends React.Component {
                            name="lastname"
                            onChange={this.changeHandlerSignUp}
                         />
-                        <button type="submit">Sign Up!</button>
+                        <button type="submit">Signup</button>
                      </form>
                   </StyledForm>
                </StyledContainer>
