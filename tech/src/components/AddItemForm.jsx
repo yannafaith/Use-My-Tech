@@ -1,33 +1,10 @@
 import React from 'react';
-import styled from 'styled-components';
-
-const FormDiv = styled.form`{
-    display: flex;
-    flex-direction: column;
-    // border: solid red 2px;
-    width: 100%;
-    margin-top: 2%;
-    // justify-content: space-between;
-    justify-content: center;
-        input {
-            // border: solid green 2px;
-            width: 400px;
-            padding-right: 4%;
-            margin-left: 4%;
-
-        }
-    button {
-        // border: solid red 2px;
-        margin-left: 5%;
-        margin-top: 1%;
-    }
-
-}`;
+import { Form } from '../css/styledcomps.js'
 
 const AddItemForm = (props) => {
 
     return (
-        <FormDiv>
+        <Form>
             <form onSubmit={props.submitHandler} >
                 <input 
                     placeholder = 'brand'
@@ -65,7 +42,7 @@ const AddItemForm = (props) => {
                 <button onClick={props.uploadImg}>Upload</button>
                 <button type='submit'>Add Item</button>
             </form>
-        </FormDiv>
+        </Form>
     )
 };
 

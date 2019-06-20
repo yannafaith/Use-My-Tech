@@ -1,113 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
 import { getUsers, login, registerUser } from '../actions';
+import { AuthStart, AuthDone, AuthForm} from '../css/styledcomps.js'
 
-const AuthDone = styled.div`
-    {
-      border: solid #07186f 1px;
-      background-color: #f4f7fb;
-      height: 500px;
-      width: 90%;
-      margin: 0 auto;
-      margin-top: 4%;
-      margin-bottom: 5%;
-
-      p {
-         display: flex;
-         justify-content: center;
-         font-size: 1.5rem;
-         margin-top: 10%;
-      };
-
-      div {
-         display: flex;
-         justify-content: space-around;
-         width: 30%;
-         margin: 0 auto;
-
-         button {
-            height: 45px;
-            width: 150px;
-            margin-top: 15%;
-            background-color: white;
-            border-color: blue;
-            color: blue;
-            font-size: 1rem;
-            cursor: pointer;
-
-            :hover {
-               background-color: blue;
-               border-color: blue;
-               color: white;
-            }
-
-         }
-
-      }
-
-   }
-`;
-
-const AuthStart = styled.div`
-    {
-      border: solid #07186f 1px;
-      height: 500px;
-      width: 90%;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      background-color: #f4f7fb;
-      justify-content: space-evenly;
-      margin-top: 4%;
-      margin-bottom: 5%;
-   }
-`;
-
-const StyledForm = styled.div`
-    {
-      background-color: #f4f7fb;
-      form {
-         display: flex;
-         flex-direction: column;
-         width: 500px;
-         justify-content: center;
-         margin-top: 5%;
-         background-color: #f4f7fb; 
-         
-         input {
-           height: 35px;
-           background-color: white;
-           margin-bottom: 10px;
-           padding-left: 15px;
-           border: none;
-           border-radius: 5px;
-         }
-
-         button {
-            height: 45px;
-            width: 150px;
-            margin: 0 auto;
-            margin-top: 5%;
-            background-color: white;
-            border-color: blue;
-            color: blue;
-            font-size: 1rem;
-            cursor: pointer;
-
-            :hover {
-               background-color: blue;
-               border-color: blue;
-               color: white;
-            }
-         }
-      }
-   }
-`;
-
-class SignInView extends React.Component {
+class AuthView extends React.Component {
    state = {
       //   newUser: {},
       validUser: null,
@@ -136,7 +33,6 @@ class SignInView extends React.Component {
       });
    };
 
-
    submitHandlerLogin = e => {
       e.preventDefault();
       if (this.state.username !== null) {
@@ -150,19 +46,14 @@ class SignInView extends React.Component {
 
    submitHandlerSignUp = e => {
       e.preventDefault();
-      // localStorage.setItem('username', this.state.username);
       this.props.registerUser(this.state.newUser);
-  
-
       this.setState({ newUser: null});
    };
-
 
    render() {
       const loggedInUser = this.props.users.filter(
          user => user.username === localStorage.username
       );
-
 
       return (
          <div>
@@ -195,7 +86,7 @@ class SignInView extends React.Component {
                </AuthDone>
             ) : (
                <AuthStart>
-                  <StyledForm>
+                  <AuthForm>
                      <form onSubmit={this.submitHandlerLogin}>
                         <input
                            placeholder="username"
@@ -209,8 +100,8 @@ class SignInView extends React.Component {
                         />
                         <button type="submit">Login</button>
                      </form>
-                  </StyledForm>
-                  <StyledForm>
+                  </AuthForm>
+                  <AuthForm>
                      <form onSubmit={this.submitHandlerSignUp}>
                         <input
                            placeholder="username"
@@ -244,7 +135,7 @@ class SignInView extends React.Component {
                         />
                         <button type="submit">Signup</button>
                      </form>
-                  </StyledForm>
+                  </AuthForm>
                </AuthStart>
             )}
          </div>
@@ -261,4 +152,4 @@ function mapStateToProps(state) {
 export default connect(
    mapStateToProps,
    { getUsers, login, registerUser }
-)(SignInView);
+)(AuthView);

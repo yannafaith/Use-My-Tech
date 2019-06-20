@@ -1,29 +1,11 @@
 import React, { Component } from 'react';
-import './App.css';
-import SignInView from './views/SignInView';
-import ItemListView from './views/ItemListView';
-import ItemView from './views/ItemView';
-import ProfileView from './views/ProfileView';
-import {Route} from 'react-router-dom';
-import Navigation from './components/Navigation';
-import styled from 'styled-components';
-
-const StyledFooter = styled.footer`{
-  // border: solid red 2px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  padding-right: 50%;
-  color: white;
-  background-color: #0c1425;
-  height: 95px;
-  align-items: center;
-    p {
-      :hover {
-        color: #cccccc
-      };
-    };
-}`;
+import Auth from './views/Auth.jsx';
+import Market from './views/Market.jsx';
+import Item from './views/Item.jsx';
+import UserProfile from './views/UserProfile.jsx';
+import { Route } from 'react-router-dom';
+import Navigation from './components/Navigation.jsx';
+import { Footer } from './css/styledcomps.js'
 
 class App extends Component {
   render() {
@@ -31,22 +13,20 @@ class App extends Component {
       <div className="App">
         <Navigation/>
         <div className='Routes'>
-          <Route exact path='/' component={SignInView} />
-          <Route path='/items' component={ItemListView} />
-          <Route path='/item/:id' component={ItemView} />
-          <Route path='/profile/:username' component={ProfileView} />
+          <Route exact path='/' component={Auth} />
+          <Route path='/items' component={Market} />
+          <Route path='/item/:id' component={Item} />
+          <Route path='/profile/:username' component={UserProfile} />
         </div>
-        <StyledFooter>
+        <Footer>
           <p>Tech Plum 2019</p>
           <p>Privacy Policy</p>
           <p>Terms and Conditions</p>
           <p>Help</p>
-        </StyledFooter>
+        </Footer>
       </div>
     );
   };
 };
 
 export default App;
-
-// need to put header in Nav component
