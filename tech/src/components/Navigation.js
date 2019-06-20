@@ -12,6 +12,7 @@ const StyledNav = styled.div`{
    position: sticky; top: 0;
    background: white;
    box-shadow: 0px 0px 20px -7px rgba(0, 0, 0, 0.5);
+   z-index: 2;
 
    .links {
       margin-right: 2%;

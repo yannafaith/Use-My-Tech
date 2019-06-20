@@ -53,7 +53,7 @@ import { getItems, getUsers } from '../actions';
             font-size: 1rem;
             border: none;
             width: 100%;
-            border: solid #f0f0f0 2px;
+            //border: solid #f0f0f0 2px;
             border-radius: 5px;
         };
     };
@@ -150,20 +150,20 @@ class ItemListView extends React.Component {
             <div className="items">
                 <Container> 
                     <div>
-                        <i class="far fa-search"></i>
+                        <i className="far fa-search"></i>
                         <input
                             placeholder="search listings..."
                         />
                     </div>
                     <div className="location"> 
-                        <i class="fal fa-globe"></i>
+                        <i className="fal fa-globe"></i>
                         <p>Phoenix, Arizona</p>
                     </div>
                 </Container>        
                 <StyledContainer>
                     {this.props.items.map(item => {
                         if (item.owner !== parseInt(localStorage.userId) && item.renter == null)
-                            {return (
+                            { return (
                                 <StyledLinksToItems>
                                     <img src={item.imgUrl} alt='item'/>
                                     <p> <span>{item.title} </span>: ${item.dailyPrice}/day</p>
@@ -177,7 +177,7 @@ class ItemListView extends React.Component {
                                         }}>
                                             <button>Rent</button> 
                                     </Link>
-                                    <i class="fal fa-bookmark"></i>
+                                    <i className="fal fa-bookmark"></i>
                                     </div>
                                 </StyledLinksToItems>
                         )}

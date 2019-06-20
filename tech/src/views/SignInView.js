@@ -4,7 +4,53 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { getUsers, login, registerUser } from '../actions';
 
-const StyledContainer = styled.div`
+const AuthDone = styled.div`
+    {
+      border: solid #07186f 1px;
+      background-color: #f4f7fb;
+      height: 500px;
+      width: 90%;
+      margin: 0 auto;
+      margin-top: 4%;
+      margin-bottom: 5%;
+
+      p {
+         display: flex;
+         justify-content: center;
+         font-size: 1.5rem;
+         margin-top: 10%;
+      };
+
+      div {
+         display: flex;
+         justify-content: space-around;
+         width: 30%;
+         margin: 0 auto;
+
+         button {
+            height: 45px;
+            width: 150px;
+            margin-top: 15%;
+            background-color: white;
+            border-color: blue;
+            color: blue;
+            font-size: 1rem;
+            cursor: pointer;
+
+            :hover {
+               background-color: blue;
+               border-color: blue;
+               color: white;
+            }
+
+         }
+
+      }
+
+   }
+`;
+
+const AuthStart = styled.div`
     {
       border: solid #07186f 1px;
       height: 500px;
@@ -41,23 +87,20 @@ const StyledForm = styled.div`
          }
 
          button {
-            width: 175px;
             height: 45px;
-            align-self: center;
+            width: 150px;
+            margin: 0 auto;
+            margin-top: 5%;
             background-color: white;
             border-color: blue;
             color: blue;
-            font-weight: 700;
-            font-size: .9rem;
-            font-family: 'Roboto';
-            border-radius: 5px;
-            letter-spacing: 3px;
-            margin-top: 20px;
+            font-size: 1rem;
+            cursor: pointer;
 
             :hover {
                background-color: blue;
+               border-color: blue;
                color: white;
-               cursor: pointer;
             }
          }
       }
@@ -124,8 +167,9 @@ class SignInView extends React.Component {
       return (
          <div>
             {localStorage.username ? (
-               <StyledContainer>
-                  <p>Welcome {localStorage.username}! Where to next?</p>
+               <AuthDone>
+                  <p>Welcome back, {localStorage.username}! Where to next?</p>
+                  <div>
                   <Link
                      to={{
                         pathname: '/items',
@@ -147,9 +191,10 @@ class SignInView extends React.Component {
                   >
                      <button> My Profile </button>
                   </Link>
-               </StyledContainer>
+                  </div>
+               </AuthDone>
             ) : (
-               <StyledContainer>
+               <AuthStart>
                   <StyledForm>
                      <form onSubmit={this.submitHandlerLogin}>
                         <input
@@ -200,7 +245,7 @@ class SignInView extends React.Component {
                         <button type="submit">Signup</button>
                      </form>
                   </StyledForm>
-               </StyledContainer>
+               </AuthStart>
             )}
          </div>
       );
