@@ -5,36 +5,32 @@ import { getUsers, logout } from '../actions';
 import styled from 'styled-components';
 
 const StyledNav = styled.div`{
-   display: flex;
-   width: 99%;
    height: 90px;
+   display: flex;
    justify-content: space-between;
+   align-items: center;
+   position: sticky; top: 0;
+   background: white;
    box-shadow: 0px 0px 27px -7px rgba(0, 0, 0, 0.5);
-   position: fixed;
-   z-index: 2;
-   width: 100%;
-   background: #ffffff;
-   top: 0;
-   line-height: 30px;
-   padding-left: 3%;
+
    .links {
-      // border: solid red 2px;
-      margin-right: 5%;
-      align-items: center;
+      margin-right: 2%;
       width: 400px;
       display: flex;
       justify-content: space-around;
-   }
-   align-items: center;
+   };
+
    h1 {
       font-family: 'Roboto';
       font-weight: 900;
       font-size: 24px;
-   }
+      margin-left: 35%;
+      width: 120px;
+   };
+
 }`;
 
 class Navigation extends React.Component  {
-
 
    render () {
     const user = localStorage.username;
@@ -47,25 +43,21 @@ class Navigation extends React.Component  {
            <div className='links'>
            <a href='https://blissful-goldberg-662c12.netlify.com/'>About</a>
            <Link to='/items'>Plum Market</Link>
-           <Link
-                 to={{
-                    pathname: `/profile/${user}`,
-                    state: {
-                       user: this.props.users.map(user => {
-                          if (user.username === user) return user;
-                       }),
-                    },
-                 }}
-              >
-                 {' '}
-                  Profile
+           <Link to={{
+                  pathname: `/profile/${user}`,
+                  state: {
+                     user: this.props.users.filter(user => {
+                        if (user.username === user);
+                     })
+                  },
+               }}
+            > Profile
             </Link>
             <Link onClick={() => this.props.logout()}
-                 to={{
-                    pathname: `/`
-                 }}
-              > Logout
-                 {' '}
+               to={{
+                  pathname: `/`
+               }}
+            > Logout
             </Link>
          </div>
         </StyledNav>
