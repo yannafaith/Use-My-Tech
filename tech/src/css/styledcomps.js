@@ -176,7 +176,7 @@ export const Search = styled.div`{
             margin-left: 15px;
             font-size: 1rem;
             border: none;
-            width: 100%;
+            width: 400px;
             border-radius: 5px;
         };
 
@@ -548,7 +548,6 @@ export const UserItem = styled.div`
 }`;
 
 export const RequestItem = styled.div`
-   border: solid yellow 2px;
    max-width: 30%;
    min-width: 30%;
    height: 350px;
