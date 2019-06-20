@@ -35,14 +35,15 @@ class Item extends React.Component {
       const data = this.props.location.state.itemClicked;
 
        let clickedUser = this.props.users.filter(user => {
-          if (user.userId === data.owner) return user
+          if (user.userId === data.owner) return user;
+          else return null;
       }); 
 
       return (
           <InItem>
               {this.props.location.state.updatingItem ?
                 <form id='edit-form' onSubmit={this.submit}>
-                    <img style={{width: '275px', height: '275px'}}src={data.image} />
+                    <img alt="" style={{width: '275px', height: '275px'}}src={data.image} />
                     <p>Change Image? <input type='file'/> </p>
                     <p>Title: {
                     <input 

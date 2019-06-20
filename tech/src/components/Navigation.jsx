@@ -23,7 +23,8 @@ class Navigation extends React.Component  {
                   pathname: `/profile/${user}`,
                   state: {
                   user: this.props.users.filter(user => {
-                     if (user.username === user);
+                     if (user.username === user) return user;
+                     else return null;
                   })},
                }}
             > Profile </Link>

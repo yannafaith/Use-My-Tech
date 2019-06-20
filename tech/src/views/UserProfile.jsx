@@ -98,7 +98,7 @@ class UserProfile extends React.Component {
                   </CenterHeader>
                   <UserItems>
                      {this.props.items.map(item => {
-                        if (item.owner == user.userId) {
+                        if (item.owner === user.userId) {
                            return (
                               <UserItem>
                                  <img src={item.imgUrl} alt="item" />
@@ -134,7 +134,7 @@ class UserProfile extends React.Component {
                                  )}
                               </UserItem>
                            );
-                        }
+                        } else { return null }
                      })}
                   </UserItems>
 
@@ -176,7 +176,7 @@ class UserProfile extends React.Component {
                                        Cancel
                                     </button>
                                  </RequestItem>
-                              ); 
+                              ); else return null;
                            })}
                         </div>
    
@@ -184,7 +184,7 @@ class UserProfile extends React.Component {
                            if (item.owner === localStorage.userId) {
                               count+=1
                               return count;
-                           }}
+                           } else return null }
                         )}
    
                         {count !== 0 ? (
@@ -196,9 +196,9 @@ class UserProfile extends React.Component {
                                        <img src={item.imgUrl} alt='item' />
                                        <p>{item.title}</p>
                                        <p>Rent Requested by {this.props.users.map(user => {
-                                          if (user.userId === item.renter) return (user.username)})} </p>
+                                          if (user.userId === item.renter) return (user.username); else return null})} </p>
                                     </RequestItem>
-                                 ) 
+                                 ); else return null 
                               })}
                            </div>
                         ) : <CenterHeader><h3>No inbound requests found</h3></CenterHeader>
