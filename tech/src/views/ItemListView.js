@@ -20,7 +20,6 @@ import { getItems, getUsers } from '../actions';
     }
 
     .location {
-        margin-left: 5%;
         border: none;
         p {
             margin-left: 3%;
@@ -29,7 +28,7 @@ import { getItems, getUsers } from '../actions';
         };
 
         i {
-            color: gray;
+            color: #07186f;
             cursor: pointer;
         }
     };
@@ -44,16 +43,18 @@ import { getItems, getUsers } from '../actions';
         i {
             font-size: 1em;
             display: flex;
-            color: gray;
+            color: #07186f;
         }
 
         input {
-            height: 10px;
+            height: 1px;
             padding: 15px;
             margin-left: 15px;
             font-size: 1rem;
             border: none;
             width: 100%;
+            border: solid #f0f0f0 2px;
+            border-radius: 5px;
         };
     };
 
@@ -63,8 +64,8 @@ const StyledContainer = styled.div`{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    margin-top: 4%;
-    padding-top: 5%;
+    margin-top: 3%;
+    padding-top: 3%;
     height: 675px;
     overflow: scroll;
     justify-content: space-around;
@@ -155,7 +156,7 @@ class ItemListView extends React.Component {
                         />
                     </div>
                     <div className="location"> 
-                        <i class="fal fa-location-arrow"/> 
+                        <i class="fal fa-globe"></i>
                         <p>Phoenix, Arizona</p>
                     </div>
                 </Container>        

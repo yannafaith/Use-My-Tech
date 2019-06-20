@@ -6,7 +6,7 @@ import { getUsers, login, registerUser } from '../actions';
 
 const StyledContainer = styled.div`
     {
-      border: solid slategray 1px;
+      border: solid #07186f 1px;
       height: 500px;
       width: 90%;
       margin: 0 auto;
@@ -15,7 +15,7 @@ const StyledContainer = styled.div`
       align-items: center;
       background-color: #f4f7fb;
       justify-content: space-evenly;
-      margin-top: 10%;
+      margin-top: 4%;
       margin-bottom: 5%;
    }
 `;
@@ -51,7 +51,7 @@ const StyledForm = styled.div`
             font-size: .9rem;
             font-family: 'Roboto';
             border-radius: 5px;
-            letter-spacing: 1px;
+            letter-spacing: 3px;
             margin-top: 20px;
 
             :hover {

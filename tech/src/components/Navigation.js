@@ -5,13 +5,13 @@ import { getUsers, logout } from '../actions';
 import styled from 'styled-components';
 
 const StyledNav = styled.div`{
-   height: 90px;
+   height: 80px;
    display: flex;
    justify-content: space-between;
    align-items: center;
    position: sticky; top: 0;
    background: white;
-   box-shadow: 0px 0px 27px -7px rgba(0, 0, 0, 0.5);
+   box-shadow: 0px 0px 20px -7px rgba(0, 0, 0, 0.5);
 
    .links {
       margin-right: 2%;
