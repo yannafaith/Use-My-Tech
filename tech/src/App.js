@@ -5,7 +5,7 @@ import Item from './views/Item.jsx';
 import UserProfile from './views/UserProfile.jsx';
 import { Route } from 'react-router-dom';
 import Navigation from './components/Navigation.jsx';
-import { Footer } from './css/styledcomps.js'
+import { Footer } from './css/styledcomps.js';
 
 class App extends Component {
   render() {

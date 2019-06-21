@@ -90,14 +90,14 @@ export const AuthDone = styled.div`{
             width: 150px;
             margin-top: 15%;
             background-color: white;
-            border-color: blue;
-            color: blue;
+            border-color: #0360ee;
+            color: #0360ee;
             font-size: 1rem;
             cursor: pointer;
 
             :hover {
-                background-color: blue;
-                border-color: blue;
+                background-color: #0360ee;
+                border-color: #0360ee;
                 color: white;
             };
         };
@@ -131,14 +131,14 @@ export const AuthForm = styled.div`{
             margin: 0 auto;
             margin-top: 5%;
             background-color: white;
-            border-color: blue;
+            border-color: #0360ee;
             color: blue;
             font-size: 1rem;
             cursor: pointer;
 
             :hover {
-                background-color: blue;
-                border-color: blue;
+                background-color: #0360ee;
+                border-color: #0360ee;
                 color: white;
             };
         };
@@ -248,8 +248,8 @@ export const Item = styled.div`{
     };
 
     button {
-        border: 1px solid blue;
-        color: blue;
+        border: 1px solid #0360ee;
+        color: #0360ee;
         border-radius: 5px;
         height: 40px;
         width: 150px;
@@ -259,7 +259,7 @@ export const Item = styled.div`{
 
         :hover {
             color: white;
-            background-color: blue;
+            background-color: #0360ee;
         };
     };
 
@@ -297,9 +297,9 @@ export const InItem = styled.div`{
         button {
             font-size: 1rem;
             font-weight: $font-weight-medium;
-            color: blue;
+            color: #0360ee;
             background: white;
-            border: blue solid 1px;
+            border: #0360ee solid 1px;
             border-radius: 5px;
             width: 150px;
             height: 50px;
@@ -309,7 +309,7 @@ export const InItem = styled.div`{
             text-decoration: none;
 
             :hover {
-                background: blue;
+                background: #0360ee;
                 color: white;
             };
 
@@ -331,9 +331,9 @@ export const ItemDetails = styled.div`{
 
 
     button {
-        border: 1px solid blue;
+        border: 1px solid #0360ee;
         align-self: center;
-        color: blue;
+        color: #0360ee;
         border-radius: 5px;
         height: 40px;
         width: 150px;
@@ -341,7 +341,7 @@ export const ItemDetails = styled.div`{
         margin-top: 20px;
         :hover {
             color: white;
-            background-color: blue;
+            background-color: #0360ee;
         }
     }
 }`;
@@ -611,10 +611,10 @@ export const AddForm = styled.div`{
     height: 150px;
        #fourth {
           font-size: 1rem;
-          font-weight: $font-weight-medium;
-          color: blue;
+          //font-weight: $font-weight-medium;
+          color: #0360ee;
           background: white;
-          border: blue solid 1px;
+          border: #0360ee solid 1px;
           border-radius: 5px;
           width: 150px;
           height: 50px;
@@ -648,6 +648,8 @@ export const AddForm = styled.div`{
         }
     button {
         // border: solid red 2px;
+        background-color: #0360ee;
+        color: white;
         margin-left: 5%;
         margin-top: 1%;
     }

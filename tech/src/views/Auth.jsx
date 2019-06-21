@@ -57,6 +57,7 @@ class AuthView extends React.Component {
 
       return (
          <div>
+            <img id="logo" alt="" src="../images/plum.png" />
             {localStorage.username ? (
                <AuthDone>
                   <p>Welcome back, {localStorage.username}! Where to next?</p>

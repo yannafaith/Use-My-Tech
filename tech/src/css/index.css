@@ -14,3 +14,14 @@ a {
 a:hover {
   color: slategray;
 }
+
+button {
+  border-radius: 5px;
+}
+
+#logo {
+  width: 250px;
+  display: flex;
+  margin: 0 auto;
+  margin-top: 3%;
+}
