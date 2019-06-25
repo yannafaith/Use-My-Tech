@@ -3,17 +3,34 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getItems, getUsers } from '../actions';
 import { Search, MarketList, Item } from '../css/styledcomps.js'
+import NodeGeocoder from 'node-geocoder'
 
 class Market extends React.Component {
-
     state = {
         search: "",
-        posts: []
+        posts: [],
+        options: {
+            provider: 'opencage',
+            apiKey: '641daca935dd4e19957aa616d27e2932'
+        },
     };
+
 
     componentDidMount() {
         this.props.getUsers();
         this.props.getItems();
+
+        const geocoder = NodeGeocoder(this.state.options);
+        if (navigator.geolocation) {
+            function displayLocationInfo(position) {
+                const lng = position.coords.longitude;
+                const lat = position.coords.latitude;
+                geocoder.reverse({lat: lat, lon: lng}, function(err, res) {
+                    console.log(res);
+                });
+            } navigator.geolocation.getCurrentPosition(displayLocationInfo);  
+        } else return;
+                    
     };
 
     handleChange = (e) => {
